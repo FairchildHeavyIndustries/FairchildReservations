@@ -76,7 +76,7 @@ $(document).ready(function(){
 			var currAirport = $(slktItems[i]).attr("data-airport");
 			var currCity = $(slktItems[i]).attr("data-city");
 			$(this).mouseenter(function(){
-				$("#console").text($(this).attr('data-airport') + " tox ")
+				$("#console").text($(this).attr('data-airport'))
 				$(this).addClass("slkt_item_hover");
 				$("#airport_icon_" + currAirport).fadeIn("fast");
 			}).mouseleave(function(){
