@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>test</string>
+			<key>host</key>
+			<string>127.0.0.1</string>
+			<key>name</key>
+			<string>anonymous@127.0.0.1</string>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>user</key>
+			<string></string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>latin1</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelectedIndexSet</key>
+			<array>
+				<integer>3</integer>
+			</array>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {884, 482}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>table</key>
+			<string>city</string>
+			<key>view</key>
+			<string>SP_VIEW_CONTENT</string>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>select city.name as city, airport.name as airport, city.position_x, city.position_y from city, airport where city.id = airport.cityId and city.isActive=TRUE</string>
+		<string>select city.name as city, airport.name as airport, city.position_x, city.position_y from city, airport where city.id = airport.cityId and city.isActive=TRUE";</string>
+		<string>select distinct city.name, airport.name as airport from city, airport where city.id = airport.cityId and airport.name in 
+	(select flight.`arrivalAiport` from flight where flight.`departureAirport` = 'SDQ'	)</string>
+		<string>select distinct city.name, airport.name as airport from city, airport where city.id = airport.cityId and airport.name in 
+	(select flight.`arrivalAiport` from flight where flight.`departureAirport` = 
+		(select airport.name from city, airport where city.id = airport.cityId and city.name ='Santo Domingo')
+	)</string>
+		<string>select distinct city.name, airport.name from city, airport where city.id = airport.cityId and airport.name in 
+	(select flight.`arrivalAiport` from flight where flight.`departureAirport` = 
+		(select airport.name from city, airport where city.id = airport.cityId and city.name ='Santo Domingo')
+	)</string>
+		<string>select distinct city.name from city, airport where city.id = airport.cityId and airport.name in 
+	(select flight.`arrivalAiport` from flight where flight.`departureAirport` = 
+		(select airport.name from city, airport where city.id = airport.cityId and city.name ='Santo Domingo')
+	)</string>
+		<string>select city.name from city, airport where city.id = airport.cityId and airport.name in 
+	(select flight.`arrivalAiport` from flight where flight.`departureAirport` = 
+		(select airport.name from city, airport where city.id = airport.cityId and city.name ='Santo Domingo')
+	)</string>
+		<string>select city.name from city, airport where city.id = airport.cityId and airport.name in 
+	(select flight.`arrivalAiport` from flight where flight.`departureAirport` = 
+		(select airport.name from city, airport where city.id = airport.cityId and city.name ='Santo Domingo')
+	);
+/*select city.name 
+from 
+	city, 
+	flight, 
+	airport 
+where 
+	city.id = airport.cityId
+	and flight.`departureAirport` ='Santo Domingo'
+	and flight.`arrivalAiport` = airport.`name`;*/</string>
+		<string>select distinct city.name from city, airport where city.id = airport.cityId and airport.name in 
+	(select flight.`arrivalAiport` from flight where flight.`departureAirport` = 
+		(select airport.name from city, airport where city.id = airport.cityId and city.name ='Santo Domingo')
+	);
+/*select city.name 
+from 
+	city, 
+	flight, 
+	airport 
+where 
+	city.id = airport.cityId
+	and flight.`departureAirport` ='Santo Domingo'
+	and flight.`arrivalAiport` = airport.`name`;*/</string>
+		<string>select name from city, airport where city.id = airport.cityId and airport.name in 
+	(select flight.`arrivalAiport` from flight where flight.`departureAirport` = 
+		(select airport.name from city, airport where city.id = airport.cityId and city.name ='Santo Domingo')
+)
+/*select city.name 
+from 
+	city, 
+	flight, 
+	airport 
+where 
+	city.id = airport.cityId
+	and flight.`departureAirport` ='Santo Domingo'
+	and flight.`arrivalAiport` = airport.`name`;*/</string>
+		<string>select flight.`arrivalAiport` from flight where flight.`departureAirport` = (select airport.name from city, airport where city.id = airport.cityId and city.name ='Santo Domingo')
+
+/*select city.name 
+from 
+	city, 
+	flight, 
+	airport 
+where 
+	city.id = airport.cityId
+	and flight.`departureAirport` ='Santo Domingo'
+	and flight.`arrivalAiport` = airport.`name`;*/</string>
+		<string>select flight.`arrivalAiport` from flight where flight.`departureAirport` = 'SDQ'
+
+/*select city.name 
+from 
+	city, 
+	flight, 
+	airport 
+where 
+	city.id = airport.cityId
+	and flight.`departureAirport` ='Santo Domingo'
+	and flight.`arrivalAiport` = airport.`name`;*/</string>
+		<string>select flight.`arrivalAiport` from flight where flight.`departureAirport` = 'Santo Domingo'
+
+/*select city.name 
+from 
+	city, 
+	flight, 
+	airport 
+where 
+	city.id = airport.cityId
+	and flight.`departureAirport` ='Santo Domingo'
+	and flight.`arrivalAiport` = airport.`name`;*/</string>
+		<string>select city.name 
+from 
+	city, 
+	flight, 
+	airport 
+where 
+	city.id = airport.cityId
+	and flight.`departureAirport` ='Santo Domingo'
+	and flight.`arrivalAiport` = airport.`name`</string>
+		<string>select name from city where name !='Santo Domingo';
+select number from flight</string>
+		<string>select name from city where name !='Santo Domingo';
+select flightNumber from flight</string>
+		<string>select name from city where name !='Santo Domingo'</string>
+		<string>select name from cities</string>
+		<string>select * from cities</string>
+		<string>select * from carriers</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.1.45</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+		<script type='text/javascript' src='../js/lib/jquery-ui.min.js'></script>
+		<script type='text/javascript' src='../js/lib/jquery.tmpl.min.js'></script>
+		<script type='text/javascript' src='../js/frs.lib.js'></script>
+		<link type="text/css" rel="stylesheet" media="screen" href='../css/jquery-ui.css'></link>	
+		<link type="text/css" rel="stylesheet" media="screen" href='../css/frs.css'></link>
+	</head>
+	<body>
+		<div id="header">
+			<h1>Fairchild Reservation System</h1>
+		</div>
+		<div id="main">
+			<div id="search_wrapper">
+				<div id='search_tab'>
+					<h3>Search for Flights</h3>
+					<div id="departure_city_selekt" class='slkt_container'>
+						<label for='departure_city'>Departure from</label>
+						<div class='slkt_dropdown' id='depr_airp_drodwn' style='display: none;'></div>
+						<div class='slkt_button' id='depr_slkt_button'><span class='slkt_text'>Choose a City:</span></div>
+					</div>
+					
+					
+					<div id="arrival_city_selekt" class='slkt_container slkt_container_inactive'>
+						<label for='arrival_city'>Arrival to</label>
+						<div class='slkt_dropdown' id='arrv_airp_drodwn' style='display: none;'></div>
+						<div class='slkt_button' id='arrv_slkt_button'><span class='slkt_text'></span></div>
+					</div>
+					
+					<label for="departure_date">Departure Date</label>
+					<input type="text" name="departure_date" value="" id="departure_date" class='calendar_input' />
+					<label for="return_date">Return Date</label>
+					<input type="text" name="return_date" value="" id="return_date" class='calendar_input' />
+					</label>
+					<label for="one_way">One Way</label>
+					<input type="radio" name="ow_rt_group" value="one_way" id="one_way">
+					<label for="round_trip">Round Trip</label>
+					<input type="radio" name="ow_rt_group" value="round_trip" id="round_trip">
+					<label for='no_of_passengers'>Number of Passengers</label>
+					<select name="no_of_passengers" id="no_of_passengers">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+					</select>
+				</div>
+				<div id='reservation_tab'>
+					<h3>My Bookings</h3>
+					<label for="enter_locator">Enter Locator<input type="text" name="enter_locator" value="" id="enter_locator"></label>
+				</div>
+			</div>
+			<div id="console_wrapper">
+				<h3>the console</h3>
+				<div id="map_container">
+					<div id="map_background" class='map_image'>
+					</div>
+				</div>
+				<span id='console'></span>
+			</div>
+		</div>
+		<script id="AirportGrid" type="text/x-jquery-tmpl">
+		    <table width='100%' class='slkt_item' data-airport='${airport}' data-city='${city}'>
+				<tr>
+					<td>${city}</td>
+					<td class='airport_name' align='right'>${airport}</td>
+				</tr>
+			</table>
+		</script>
+	</body>
+</html>
