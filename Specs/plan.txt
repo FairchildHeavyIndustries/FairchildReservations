@@ -1,0 +1,120 @@
+Fairchild Reservations System
+
+system
+	carrier
+		carrierId
+		isCodeshare(at least one must exist and be 0, that's the main carrier)
+
+Cities:	"Miami"
+	gmtOffset
+	currency (conversion from service)
+	Airports: "MIA" (a service such as flightstats.com can provide timezone/DST data, hardcode for now)
+		Terminals
+			international
+			domestic
+				
+	Ports: "Port of Miami"
+	
+	Santo Domingo
+		Airport
+			SDQ
+		Port
+			Port of Santo Domingo
+	New York 
+		Airports
+			JFK
+			LGA
+		Ports
+			Port of New York
+			
+flight
+	scheduleId
+	carrier
+	number
+	start date
+	end date
+	DOTW {mo, tu, we, th, fr, sa, su}
+	depr airport
+	arrv airport
+	depr time
+	arrv time
+	active
+	aircraftId
+	
+aircraft
+	aircraftId
+	cabins
+		first
+			noOfSeats
+		business
+		coach
+	
+fare
+	fareId(defines a chrono-group)
+	startCity
+	endCity
+	currency
+	active
+	
+fareInstance
+	fareId
+	fareInstanceId(updated on any modify, instances look like fares in gui)
+	lowAvail
+	topAvail
+	connectionDiscount
+	price
+	timestamp (if max, it's current fareIdInstance)
+	
+farePassenger
+	fareId
+	passengerType
+
+charges
+	chargeId
+	type(tax or fee or discount)
+	amount
+	applyPerPassenger
+	applyPerSegment
+	chargeTriggers
+		deprAirport
+		arrvAirport
+		passengerType
+		requestType
+		manual
+
+passengerType
+	name
+
+reservation
+	passengers
+		passengerId
+		passengerType
+	flights
+		scheduleId(cities, times, flight)
+		cabinId(this with paxtype defines inventory taken)
+	requests
+		requestId
+		requestType
+	pricing
+		pricingId(snapshot)
+		fareInstanceId(cities,price)
+	activeFlag
+	
+
+//Technologies
+
+LAMP - linux, apache, mysql, php
+web server - PHP and MySQL
+MySQL 6.0 
+PHP 5.3.5 middle
+javascript 
+jQuery 1.4.2
+GoogleMaps API
+HTML 5
+CSS 3.0
+
+//Dev
+OS X
+TextMate
+Git
+LucidChart.com
