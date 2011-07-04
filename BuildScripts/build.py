@@ -21,10 +21,31 @@ if __name__ == '__main__':
 	)
 """
 import sys
-width = 20
-height = 40
-area = width * height
-print area
-beat = "boom"  "Tshack"
-print beat*4
-print "assface" + beat[3:]
+inputBegin=int(raw_input("enter the first number:\n"))
+inputEnd=int(raw_input("enter the other number:\n"))
+
+primeList=findPrimes(inputBegin, inputEnd)
+print "the primes between",inputBegin,"and",inputEnd,"are:"
+for i in primeList:
+	print i,
+
+def findPrimes(begin, end):
+	"""finds all the primes between the begin and end values"""
+	pl=[]
+	for n in range(begin, end):
+		if n % 2 == 0:
+			continue
+		for x in range(2,n):
+			if n % x == 0:
+				break
+		else:
+			pl.append(n)
+	return pl
+	
+
+
+
+
+
+		
+			
