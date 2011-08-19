@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>GitHub/FairchildReservations.wiki/Route-display.md</string>
+	<string>../../FairchildReservations.wiki/Progress-Bar.md</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,7 +21,21 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
-		<key>GitHub/FairchildReservations.wiki/Flight-Search.md</key>
+		<key>../../FairchildReservations.wiki/Build-automation.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>54</integer>
+				<key>line</key>
+				<integer>34</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>../../FairchildReservations.wiki/Flight-Search.md</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -35,93 +49,109 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>GitHub/FairchildReservations.wiki/Functional-Specifications.md</key>
+		<key>../../FairchildReservations.wiki/Functional-Specifications.md</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>7</integer>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>8</integer>
+		</dict>
+		<key>../../FairchildReservations.wiki/Header.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>../../FairchildReservations.wiki/Home.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>1</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>../../FairchildReservations.wiki/Progress-Bar.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>92</integer>
+				<key>line</key>
+				<integer>2</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>4</integer>
+			<integer>0</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>7</integer>
+				<integer>2</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>92</integer>
 				<key>line</key>
-				<integer>7</integer>
+				<integer>2</integer>
 			</dict>
 		</dict>
-		<key>GitHub/FairchildReservations.wiki/Header.md</key>
+		<key>../../FairchildReservations.wiki/Route-display.md</key>
 		<dict>
 			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>82</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
 				<integer>0</integer>
 			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>GitHub/FairchildReservations.wiki/Home.md</key>
-		<dict>
-			<key>caret</key>
+			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>82</integer>
 				<key>line</key>
 				<integer>0</integer>
 			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
 		</dict>
-		<key>GitHub/FairchildReservations.wiki/Progress-Bar.md</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>GitHub/FairchildReservations.wiki/Route-display.md</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>GitHub/FairchildReservations.wiki/Technical-Specification.md</key>
+		<key>../../FairchildReservations.wiki/Technical-Specification.md</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -135,14 +165,14 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>GitHub/FairchildReservations.wiki/Test-Framework.md</key>
+		<key>../../FairchildReservations.wiki/Test-Framework.md</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -152,14 +182,15 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>GitHub/FairchildReservations.wiki/Home.md</string>
-		<string>GitHub/FairchildReservations.wiki/Technical-Specification.md</string>
-		<string>GitHub/FairchildReservations.wiki/Functional-Specifications.md</string>
-		<string>GitHub/FairchildReservations.wiki/Header.md</string>
-		<string>GitHub/FairchildReservations.wiki/Progress-Bar.md</string>
-		<string>GitHub/FairchildReservations.wiki/Flight-Search.md</string>
-		<string>GitHub/FairchildReservations.wiki/Route-display.md</string>
-		<string>GitHub/FairchildReservations.wiki/Test-Framework.md</string>
+		<string>../../FairchildReservations.wiki/Home.md</string>
+		<string>../../FairchildReservations.wiki/Technical-Specification.md</string>
+		<string>../../FairchildReservations.wiki/Functional-Specifications.md</string>
+		<string>../../FairchildReservations.wiki/Header.md</string>
+		<string>../../FairchildReservations.wiki/Progress-Bar.md</string>
+		<string>../../FairchildReservations.wiki/Flight-Search.md</string>
+		<string>../../FairchildReservations.wiki/Route-display.md</string>
+		<string>../../FairchildReservations.wiki/Test-Framework.md</string>
+		<string>../../FairchildReservations.wiki/Build-automation.md</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>

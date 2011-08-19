@@ -5,7 +5,7 @@ call_user_func($_GET['func']);
 function queryDB($query_string)
 {
 	$db_server = '127.0.0.1';
-	$db_name = 'test';
+	$db_name = 'tstfrsdb';
 	$db_username = 'test_frs';
 	$db_password = 'test_frs';
 	
