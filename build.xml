@@ -110,7 +110,7 @@
   <exec dir="${basedir}/cake/app" executable="${basedir}/cake/app/Console/cake" failonerror="true">
   	<arg value='testsuite' />
 	<arg value='app' />	
-	<arg value='AllController' />
+	<arg value='AllControllers' />
 	<arg value='--stderr' />
 	<arg value='--log-junit' />
 	<arg path="${basedir}/build/logs/junit.xml" />
