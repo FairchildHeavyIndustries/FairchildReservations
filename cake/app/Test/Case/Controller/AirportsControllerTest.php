@@ -36,7 +36,10 @@ class AirportsControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.airport', 'app.city', 'app.hotel', 'app.reservation', 'app.reservation_hotel', 'app.route', 'app.fare', 'app.cabin', 'app.reservation_flight', 'app.aircraft', 'app.flight', 'app.carrier', 'app.aircrafts_cabin', 'app.reservation_fare');
+	public $fixtures = array(
+	'app.airport', 
+	//'app.city', 
+);
 
 /**
  * setUp method
@@ -44,10 +47,10 @@ class AirportsControllerTestCase extends CakeTestCase {
  * @return void
  */
 	public function setUp() {
-		parent::setUp();
-
-		$this->Airports = new TestAirportsController();
-		$this->Airports->constructClasses();
+		 parent::setUp();
+		 
+		 		$this->Airports = new TestAirportsController();
+		 		$this->Airports->constructClasses();
 	}
 
 /**
