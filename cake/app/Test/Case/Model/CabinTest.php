@@ -12,7 +12,7 @@ class CabinTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.cabin', 'app.fare', 'app.reservation_flight', 'app.aircraft', 'app.flight', 'app.carrier', 'app.reservation', 'app.aircrafts_cabin');
+	public $fixtures = array('app.cabin','app.aircraft', 'app.aircrafts_cabin');
 
 /**
  * setUp method
@@ -36,4 +36,16 @@ class CabinTestCase extends CakeTestCase {
 		parent::tearDown();
 	}
 
+/**
+ * testCabinValidation method
+ * @return void
+ */
+	public function testCabinValidation()
+	{
+		$Cabins = $this->Cabin->find('all');
+		foreach ($Cabins as $Cabin) {
+			$this->assertStringMatchesFormat('%d', $Cabin['Cabin']['no_of_seat']);
+		}
+		//$this->assertEquals($result[0]['Cabin']['no_of_seat'], 80);
+	}
 }

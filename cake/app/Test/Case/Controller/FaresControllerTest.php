@@ -36,7 +36,9 @@ class FaresControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.fare', 'app.cabin', 'app.reservation_flight', 'app.aircraft', 'app.flight', 'app.carrier', 'app.route', 'app.airport', 'app.city', 'app.hotel', 'app.reservation', 'app.reservation_hotel', 'app.aircrafts_cabin', 'app.fares_flight');
+	public $fixtures = array(
+		//'app.fare', 'app.cabin', 'app.reservation_flight', 'app.aircraft', 'app.flight', 'app.carrier', 'app.route', 'app.airport', 'app.city', 'app.hotel', 'app.reservation', 'app.reservation_hotel', 'app.aircrafts_cabin', 'app.fares_flight'
+		);
 
 /**
  * setUp method

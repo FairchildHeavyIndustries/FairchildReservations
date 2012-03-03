@@ -36,7 +36,7 @@ class FlightsControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.flight', 'app.carrier', 'app.aircraft', 'app.cabin', 'app.res_flight');
+	public $fixtures = array('app.flight', 'app.carrier', 'app.aircraft', 'app.cabin', 'app.res_flight', 'app.reservation', 'app.route');
 	public $autoFixtures = false;
 
 /**
@@ -114,7 +114,7 @@ class FlightsControllerTestCase extends CakeTestCase {
  * @return void
  */
 	public function AvailableFlights() {
-		$this->loadFixtures('Flight', 'Carrier', 'Aircraft', 'Cabin', 'ResFlight');
+		$this->loadFixtures('Flight', 'Carrier', 'Aircraft', 'Cabin', 'ResFlight', 'Reservation', 'Route');
 		$result = $this->Flights->available_flights('ABC', 'DEF', '01/01/2013');
 		
 		$this->assertEquals($result[0]['Flight']['id'], 1);
@@ -139,7 +139,7 @@ class FlightsControllerTestCase extends CakeTestCase {
  * @return void
  */
 	public function AvailableFlightsSoldOut() {
-		$this->loadFixtures('Flight', 'Carrier', 'Aircraft', 'Cabin', 'ResFlight');
+		$this->loadFixtures('Flight', 'Carrier', 'Aircraft', 'Cabin', 'Reservation', 'ResFlight');
 		$result = $this->Flights->available_flights('ABC', 'DEF', '01/01/2013');
 		$this->assertEquals($result[0]['Flight']['id'], 1);
 	}

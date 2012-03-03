@@ -107,7 +107,7 @@
  </target>
 
  <target name="phpunit" description="Run unit tests with PHPUnit via cake testsuite">
-  <exec executable="${basedir}/cake/app/Console/cake" failonerror="true">
+  <exec dir="${basedir}/cake/app" executable="${basedir}/cake/app/Console/cake" failonerror="true">
   	<arg value='testsuite' />
 	<arg value='app' />	
 	<arg value='AllTests' />

@@ -1,5 +1,5 @@
 <?php
-/* Route Fixture generated on: 2012-02-10 01:09:19 : 1328836159 */
+/* Route Fixture generated on: 2012-03-03 02:49:28 : 1330742968 */
 
 /**
  * RouteFixture
@@ -28,10 +28,16 @@ class RouteFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'id' => 1,
-			'start_airport_id' => 1,
-			'end_airport_id' => 1,
-			'description' => 'Lorem ipsum dolor sit amet'
+			'id' => '1',
+			'start_airport_id' => '1',
+			'end_airport_id' => '3',
+			'description' => 'MIA-SDQ'
+		),
+		array(
+			'id' => '2',
+			'start_airport_id' => '3',
+			'end_airport_id' => '1',
+			'description' => 'SDQ-MIA'
 		),
 	);
 }

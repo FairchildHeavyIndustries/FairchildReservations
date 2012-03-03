@@ -36,7 +36,9 @@ class CitiesControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.city', 'app.airport', 'app.hotel');
+	public $fixtures = array(
+		//'app.city', 'app.airport', 'app.hotel'
+		);
 
 /**
  * setUp method
