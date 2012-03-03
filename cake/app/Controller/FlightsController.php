@@ -148,7 +148,7 @@ class FlightsController extends AppController {
 				'ResFlight.date' => $this->date_to_sql_date($flight_date)
 			)
 		));
-		debug($ResFlights);
+
 		$seatRequest = $this->Session->read('Search.number_of_passengers'); 
 		$flightIndex=0;
 		foreach ($flights as $flight) {

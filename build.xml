@@ -114,8 +114,8 @@
 	<arg value='--stderr' />
 	<arg value='--log-junit' />
 	<arg path="${basedir}/build/logs/junit.xml" />
-	<arg value='--coverage-clover' />
-        <arg path="${basedir}/build/logs/clover.xml" />
+	<!-- <arg value='-*-*coverage-clover' /> 
+        <arg path="${basedir}/build/logs/clover.xml" /> -->
 </exec>
 
  </target>
