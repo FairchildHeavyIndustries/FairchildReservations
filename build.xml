@@ -46,7 +46,8 @@
     <include name="**/*.php" />
     <modified />
    </fileset>
-
+  </apply>
+ </target>
 
  <target name="phploc" description="Measure project size using PHPLOC">
   <exec executable="phploc">
