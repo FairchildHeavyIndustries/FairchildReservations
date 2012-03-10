@@ -36,7 +36,7 @@ class FlightsControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.flight', 'app.carrier', 'app.aircraft', 'app.cabin', 'app.res_flight', 'app.reservation', 'app.route', 'app.fare');
+	public $fixtures = array('app.flight', 'app.carrier', 'app.aircraft', 'app.cabin', 'app.res_flight', 'app.reservation', 'app.route');
 	public $autoFixtures = false;
 
 /**
@@ -114,19 +114,18 @@ class FlightsControllerTestCase extends CakeTestCase {
  * @return void
  */
 	public function AvailableFlights() {
-		$this->loadFixtures('Flight', 'Carrier', 'Aircraft', 'Cabin', 'ResFlight', 'Reservation', 'Route', 'Fare');
+		$this->loadFixtures('Flight', 'Carrier', 'Aircraft', 'Cabin', 'ResFlight', 'Reservation', 'Route');
 		$result = $this->Flights->available_flights('ABC', 'DEF', '01/01/2013');
 		
 		$this->assertEquals($result[0]['Flight']['id'], 1);
 		$this->assertCount(2, $result);
-		return $result;
 	}
 
 
 /**
  * testAvailableFlightsByWeekday method
  * @test
- * @return array $flights
+ * @return void
  */
 	public function AvailableFlightsByWeekday() {
 		$this->loadFixtures('Flight', 'Carrier', 'Aircraft', 'Cabin');
@@ -149,12 +148,9 @@ class FlightsControllerTestCase extends CakeTestCase {
 /**
  * cabinsFromFlights method
  * @test
- * @depends AvailableFlights
  * @return void
  */
-	public function cabinsFromFlights(array $flights) {
-		$cabins = $this->Flights->cabins_from_flights($flights);
-		$this->assertEquals("Coach", $cabins[0]["name"]);
-		$this->assertCount(5, $cabins);
+	public function cabinsFromFlights() {
+		//$this->Flights->find()
 	}
 }
