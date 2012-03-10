@@ -108,6 +108,7 @@
 	</target>
 	<target name="deploy-qa" depends="phpunit" description="Deploys succesful build to QA">
 		<exec executable="${basedir}/BuildScripts/deploy-qa.sh">
+			<arg value="${env.BUILD_TAG}"
 		</exec>
 	</target>
 </project>
