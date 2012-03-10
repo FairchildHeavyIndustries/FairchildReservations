@@ -13,4 +13,9 @@ echo "setting /tmp permissions to a+rw";
 chmod -R a+rw $qa_path/app/tmp;
 
 echo "updating build element for website";
-echo -e "<div class=\"environment\">\n$build_tag\n</div>" > $qa_path/app/View/Elements/environment.ctp
+echo -e "
+<div class=\"environment\">\n
+QA Environment\n
+<p />\n
+Build:$build_tag\n
+</div>" > $qa_path/app/View/Elements/environment.ctp
