@@ -52,7 +52,7 @@
 	</div>
 	<?php 
 		$environment = $this->element('environment'); 
-		if (empty($environment)) {
+		if (!empty($environment)) {
 			echo $environment;
 		}
 		
