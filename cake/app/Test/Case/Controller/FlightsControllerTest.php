@@ -12,6 +12,7 @@ class TestFlightsController extends FlightsController {
  * @var boolean
  */
 	public $autoRender = false;
+	public $components = array('Session');
 
 /**
  * Redirect action
@@ -30,14 +31,13 @@ class TestFlightsController extends FlightsController {
  * FlightsController Test Case
  *
  */
-class FlightsControllerTestCase extends CakeTestCase {
+class FlightsControllerTestCase extends ControllerTestCase {
 /**
  * Fixtures
  *
  * @var array
  */
-	public $fixtures = array('app.flight', 'app.carrier', 'app.aircraft', 'app.cabin', 'app.res_flight', 'app.reservation', 'app.route', 'app.fare');
-	public $autoFixtures = false;
+	public $fixtures = array('app.flight', 'app.carrier', 'app.aircraft', 'app.cabin', 'app.res_flight', 'app.reservation', 'app.res_passenger', 'app.route', 'app.fare', 'app.aircrafts_cabin');
 
 /**
  * setUp method
@@ -65,6 +65,7 @@ class FlightsControllerTestCase extends CakeTestCase {
 /**
  * testArrayToSelectList method
  *
+ * @group unit
  * @return void
  */
 	public function testArrayToSelectList() {
@@ -77,6 +78,7 @@ class FlightsControllerTestCase extends CakeTestCase {
 
 /**
  * testArrayToSelectList method
+ * @group unit
  * @test
  * @return void
  */
@@ -90,6 +92,7 @@ class FlightsControllerTestCase extends CakeTestCase {
 
 /**
  * testArrayToSelectList method
+ * @group unit
  * @test
  * @return void
  */
@@ -110,11 +113,12 @@ class FlightsControllerTestCase extends CakeTestCase {
 
 /**
  * testAvailableFlights method
+ * @group unit
  * @test
  * @return void
  */
 	public function AvailableFlights() {
-		$this->loadFixtures('Flight', 'Carrier', 'Aircraft', 'Cabin', 'ResFlight', 'Reservation', 'Route', 'Fare');
+
 		$result = $this->Flights->available_flights('ABC', 'DEF', '01/01/2013');
 		
 		$this->assertEquals($result[0]['Flight']['id'], 1);
@@ -125,36 +129,62 @@ class FlightsControllerTestCase extends CakeTestCase {
 
 /**
  * testAvailableFlightsByWeekday method
+ * @group unit
  * @test
  * @return array $flights
  */
 	public function AvailableFlightsByWeekday() {
-		$this->loadFixtures('Flight', 'Carrier', 'Aircraft', 'Cabin');
 		$result = $this->Flights->available_flights('ABC', 'DEF', '01/05/2013');
 		$this->assertEquals($result[0]['Flight']['id'], 2);
 		$this->assertCount(1, $result);
 	}
+
 /**
- * AvailableFlightsSoldOut method
+ * AvailableCabinSoldOut method
+ * @group acceptance
  * @test
  * @return void
  */
+	public function AvailableCabinSoldOut() {
+		$result = $this->Flights->available_flights('ABC', 'DEF', '01/02/2013');
+		$this->assertCount(2, $result[1]['Aircraft']['Cabin']);
+	}
+
+/**
+ * AvailableFlightsSoldOut method
+ * @test
+ * @group acceptance
+ * @return void
+ */
 	public function AvailableFlightsSoldOut() {
-		$this->loadFixtures('Flight', 'Carrier', 'Aircraft', 'Cabin', 'Reservation', 'ResFlight');
-		$result = $this->Flights->available_flights('ABC', 'DEF', '01/01/2013');
-		$this->assertEquals($result[0]['Flight']['id'], 1);
+		// not implemented
 	}
 	
 
 /**
  * cabinsFromFlights method
  * @test
+ * @group unit
  * @depends AvailableFlights
  * @return void
  */
 	public function cabinsFromFlights(array $flights) {
 		$cabins = $this->Flights->cabins_from_flights($flights);
 		$this->assertEquals("Coach", $cabins[0]["name"]);
-		$this->assertCount(4, $cabins);
+		$this->assertCount(6, $cabins);
 	}
+
+/**
+ * setOutboundFlights method
+ * @test
+ * @group unit
+ * @return void
+ */
+	public function setOutboundFlights() {
+		
+		//$this->Flights->FRSSession->STUB_SESSION['Search']['direction'] = "pooface"; 
+		//debug($this->Flights->FRSSession->read("Search.direction"));
+	}
+	
+	
 }

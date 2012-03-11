@@ -34,6 +34,15 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	
+/**
+ * Default components
+ *
+ * @var array
+ */
+
+	public $components = array('FRSSession');
+	
+		
 	public function array_to_select_list($input_array)
 	{
 		$return_list = array_fill_keys(array_values($input_array), 'temp');
@@ -59,12 +68,12 @@ class AppController extends Controller {
 	 */
 	public function request_data_to_session()
 	{
-		$this->Session->write('Search.departure_airport', $this->request->data['Flights']['Departure Airport']);
-		$this->Session->write('Search.arrival_airport', $this->request->data['Flights']['Arrival Airport']);
-		$this->Session->write('Search.departure_date', $this->request->data['Flights']['Departure Date']);
-		$this->Session->write('Search.arrival_date', $this->request->data['Flights']['Arrival Date']);
-		$this->Session->write('Search.direction', $this->request->data['Flights']['Direction']);
-		$this->Session->write('Search.number_of_passengers', $this->request->data['Flights']['Number of Passengers']);
+		$this->FRSSession->write('Search.departure_airport', $this->request->data['Flights']['Departure Airport']);
+		$this->FRSSession->write('Search.arrival_airport', $this->request->data['Flights']['Arrival Airport']);
+		$this->FRSSession->write('Search.departure_date', $this->request->data['Flights']['Departure Date']);
+		$this->FRSSession->write('Search.arrival_date', $this->request->data['Flights']['Arrival Date']);
+		$this->FRSSession->write('Search.direction', $this->request->data['Flights']['Direction']);
+		$this->FRSSession->write('Search.number_of_passengers', $this->request->data['Flights']['Number of Passengers']);
 	}
 	
 	function multi_array_unique($array)
