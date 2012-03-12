@@ -41,10 +41,10 @@ class ResPassengersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->ResPassenger->create();
 			if ($this->ResPassenger->save($this->request->data)) {
-				$this->FRSSession->setFlash(__('The res passenger has been saved'));
+				$this->Session->setFlash(__('The res passenger has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->FRSSession->setFlash(__('The res passenger could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The res passenger could not be saved. Please, try again.'));
 			}
 		}
 		$reservations = $this->ResPassenger->Reservation->find('list');
@@ -64,10 +64,10 @@ class ResPassengersController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->ResPassenger->save($this->request->data)) {
-				$this->FRSSession->setFlash(__('The res passenger has been saved'));
+				$this->Session->setFlash(__('The res passenger has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->FRSSession->setFlash(__('The res passenger could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The res passenger could not be saved. Please, try again.'));
 			}
 		} else {
 			$this->request->data = $this->ResPassenger->read(null, $id);
@@ -91,26 +91,26 @@ class ResPassengersController extends AppController {
 			throw new NotFoundException(__('Invalid res passenger'));
 		}
 		if ($this->ResPassenger->delete()) {
-			$this->FRSSession->setFlash(__('Res passenger deleted'));
+			$this->Session->setFlash(__('Res passenger deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->FRSSession->setFlash(__('Res passenger was not deleted'));
+		$this->Session->setFlash(__('Res passenger was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 	
 	public function passenger_details () {
-		$this->FRSSession->delete('Passengers');
+		$this->Session->delete('Passengers');
 		$this->render('passenger_details');
 		
 	}
 	
 	public function set_passenger_details () {
 		
-		$this->FRSSession->write('Passengers', $this->request->data);
+		$this->Session->write('Passengers', $this->request->data);
 		/*
 		$pax_index = 0;
-		foreach ($this->FRSSession->read('Passengers.ResPassenger') as $ResPasssenger) {
-			$this->FRSSession->write('Passengers.ResPassenger.' . $pax_index . '.birth_date', $this->Time->format('Y-m-d', $ResPassenger['birth_date']));
+		foreach ($this->Session->read('Passengers.ResPassenger') as $ResPasssenger) {
+			$this->Session->write('Passengers.ResPassenger.' . $pax_index . '.birth_date', $this->Time->format('Y-m-d', $ResPassenger['birth_date']));
 			$pax_index++; 
 		}
 		*/		

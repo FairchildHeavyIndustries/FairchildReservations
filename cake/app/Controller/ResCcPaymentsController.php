@@ -41,10 +41,10 @@ class ResCcPaymentsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->ResCcPayment->create();
 			if ($this->ResCcPayment->save($this->request->data)) {
-				$this->FRSSession->setFlash(__('The res cc payment has been saved'));
+				$this->Session->setFlash(__('The res cc payment has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->FRSSession->setFlash(__('The res cc payment could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The res cc payment could not be saved. Please, try again.'));
 			}
 		}
 		$reservations = $this->ResCcPayment->Reservation->find('list');
@@ -65,10 +65,10 @@ class ResCcPaymentsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->ResCcPayment->save($this->request->data)) {
-				$this->FRSSession->setFlash(__('The res cc payment has been saved'));
+				$this->Session->setFlash(__('The res cc payment has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->FRSSession->setFlash(__('The res cc payment could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The res cc payment could not be saved. Please, try again.'));
 			}
 		} else {
 			$this->request->data = $this->ResCcPayment->read(null, $id);
@@ -93,10 +93,10 @@ class ResCcPaymentsController extends AppController {
 			throw new NotFoundException(__('Invalid res cc payment'));
 		}
 		if ($this->ResCcPayment->delete()) {
-			$this->FRSSession->setFlash(__('Res cc payment deleted'));
+			$this->Session->setFlash(__('Res cc payment deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->FRSSession->setFlash(__('Res cc payment was not deleted'));
+		$this->Session->setFlash(__('Res cc payment was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 	
@@ -105,7 +105,7 @@ class ResCcPaymentsController extends AppController {
 	
 	public function payment_details () {
 		
-		$this->FRSSession->delete('Payments');
+		$this->Session->delete('Payments');
 		$card_issuers = $this->ResCcPayment->CardIssuer->find('list');
 		
 		$this->set('cardIssuers', $card_issuers);
@@ -118,7 +118,7 @@ class ResCcPaymentsController extends AppController {
 	public function set_cc_payment()
 	{	
 	
-		$this->FRSSession->write('Payments', $this->request->data);
+		$this->Session->write('Payments', $this->request->data);
 		$this->redirect(array('action' => 'confirm_booking', 'controller' => 'Reservations'));
 		
 		

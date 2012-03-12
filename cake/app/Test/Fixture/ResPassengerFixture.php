@@ -5,9 +5,7 @@
  * ResPassengerFixture
  *
  */
-
 class ResPassengerFixture extends CakeTestFixture {
-
 
 /**
  * Fields
@@ -32,117 +30,16 @@ class ResPassengerFixture extends CakeTestFixture {
  *
  * @var array
  */
-
 	public $records = array(
 		array(
 			'id' => 1,
 			'reservation_id' => 1,
 			'seqn_no' => 1,
-			'first_name' => 'Bob',
-			'last_name' => 'Barker',
-			'telephone' => '305 555 1212',
-			'email' => 'bob@barker.com',
-			'date_of_birth' => '1950-02-16'
+			'first_name' => 'Lorem ipsum dolor sit amet',
+			'last_name' => 'Lorem ipsum dolor sit amet',
+			'telephone' => 'Lorem ipsum dolor sit amet',
+			'email' => 'Lorem ipsum dolor sit amet',
+			'date_of_birth' => '2012-02-16'
 		),
-		array(
-			'id' => 2,
-			'reservation_id' => 1,
-			'seqn_no' => 1,
-			'first_name' => 'Bob',
-			'last_name' => 'Barker',
-			'telephone' => '305 555 1212',
-			'email' => 'bob@barker.com',
-			'date_of_birth' => '1950-02-16'
-		),
-		array(
-			'id' => 3,
-			'reservation_id' => 1,
-			'seqn_no' => 1,
-			'first_name' => 'Bob',
-			'last_name' => 'Barker',
-			'telephone' => '305 555 1212',
-			'email' => 'bob@barker.com',
-			'date_of_birth' => '1950-02-16'
-		),
-		array(
-			'id' => 4,
-			'reservation_id' => 1,
-			'seqn_no' => 1,
-			'first_name' => 'Bob',
-			'last_name' => 'Barker',
-			'telephone' => '305 555 1212',
-			'email' => 'bob@barker.com',
-			'date_of_birth' => '1950-02-16'
-		),
-		array(
-			'id' => 5,
-			'reservation_id' => 1,
-			'seqn_no' => 1,
-			'first_name' => 'Bob',
-			'last_name' => 'Barker',
-			'telephone' => '305 555 1212',
-			'email' => 'bob@barker.com',
-			'date_of_birth' => '1950-02-16'
-		),
-		array(
-			'id' => 6,
-			'reservation_id' => 1,
-			'seqn_no' => 1,
-			'first_name' => 'Bob',
-			'last_name' => 'Barker',
-			'telephone' => '305 555 1212',
-			'email' => 'bob@barker.com',
-			'date_of_birth' => '1950-02-16'
-		),
-		array(
-			'id' => 7,
-			'reservation_id' => 1,
-			'seqn_no' => 1,
-			'first_name' => 'Bob',
-			'last_name' => 'Barker',
-			'telephone' => '305 555 1212',
-			'email' => 'bob@barker.com',
-			'date_of_birth' => '1950-02-16'
-		),
-		array(
-			'id' => 8,
-			'reservation_id' => 1,
-			'seqn_no' => 1,
-			'first_name' => 'Bob',
-			'last_name' => 'Barker',
-			'telephone' => '305 555 1212',
-			'email' => 'bob@barker.com',
-			'date_of_birth' => '1950-02-16'
-		),
-		array(
-			'id' => 9,
-			'reservation_id' => 1,
-			'seqn_no' => 1,
-			'first_name' => 'Bob',
-			'last_name' => 'Barker',
-			'telephone' => '305 555 1212',
-			'email' => 'bob@barker.com',
-			'date_of_birth' => '1950-02-16'
-		),
-		array(
-			'id' => 10,
-			'reservation_id' => 1,
-			'seqn_no' => 1,
-			'first_name' => 'Bob',
-			'last_name' => 'Barker',
-			'telephone' => '305 555 1212',
-			'email' => 'bob@barker.com',
-			'date_of_birth' => '1950-02-16'
-		),
-		array(
-			'id' => 11,
-			'reservation_id' => 1,
-			'seqn_no' => 1,
-			'first_name' => 'Bob',
-			'last_name' => 'Barker',
-			'telephone' => '305 555 1212',
-			'email' => 'bob@barker.com',
-			'date_of_birth' => '1950-02-16'
-		)
 	);
 }

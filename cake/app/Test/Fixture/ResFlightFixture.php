@@ -23,23 +23,18 @@ class ResFlightFixture extends CakeTestFixture {
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'InnoDB')
 	);
 
-
-	
-	
 /**
  * Records
  *
  * @var array
- */	
-
-
+ */
 	public $records = array(
 		array(
 			'id' => 1,
 			'reservation_id' => 1,
-			'flight_id' => 2,
-			'cabin_id' => 3,
-			'date' => '2013-01-02',
+			'flight_id' => 1,
+			'cabin_id' => 1,
+			'date' => '2013-01-01',
 			'is_active' => '1'
 		),
 	);

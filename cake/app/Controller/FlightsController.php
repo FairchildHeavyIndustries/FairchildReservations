@@ -6,25 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Flight $Flight
  */
 class FlightsController extends AppController {
-
-/**
- * private members
- *
- * @var string
- */
-
 	private $outboundRadioName = 'sel_ob_fl';
 	private $returnRadioName = 'sel_rt_fl';
-
-
-
-/**
- * Default components
- *
- * @var array
- */
-	
-	public $components = array('FRSSession');
 	
 /**
  * Default helper
@@ -76,10 +59,10 @@ class FlightsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Flight->create();
 			if ($this->Flight->save($this->request->data)) {
-				$this->FRSSession->setFlash(__('The flight has been saved'));
+				$this->Session->setFlash(__('The flight has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->FRSSession->setFlash(__('The flight could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The flight could not be saved. Please, try again.'));
 			}
 		}
 		$carriers = $this->Flight->Carrier->find('list');
@@ -100,10 +83,10 @@ class FlightsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Flight->save($this->request->data)) {
-				$this->FRSSession->setFlash(__('The flight has been saved'));
+				$this->Session->setFlash(__('The flight has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->FRSSession->setFlash(__('The flight could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The flight could not be saved. Please, try again.'));
 			}
 		} else {
 			$this->request->data = $this->Flight->read(null, $id);
@@ -128,10 +111,10 @@ class FlightsController extends AppController {
 			throw new NotFoundException(__('Invalid flight'));
 		}
 		if ($this->Flight->delete()) {
-			$this->FRSSession->setFlash(__('Flight deleted'));
+			$this->Session->setFlash(__('Flight deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->FRSSession->setFlash(__('Flight was not deleted'));
+		$this->Session->setFlash(__('Flight was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 
@@ -166,8 +149,7 @@ class FlightsController extends AppController {
 			)
 		));
 
-		$seatRequest = $this->FRSSession->read('Search.number_of_passengers'); 
-
+		$seatRequest = $this->Session->read('Search.number_of_passengers'); 
 		$flightIndex=0;
 		foreach ($flights as $flight) {
 
@@ -178,11 +160,12 @@ class FlightsController extends AppController {
 					
 					if ($ResFlight['ResFlight']['flight_id'] == $flight['Flight']['id']  && $ResFlight['ResFlight']['cabin_id'] == $cabin['id']) {
 						$seatSold = $seatSold + count($ResFlight['Reservation']['ResPassenger']);							
+						
 					}
 				}
 				if ($cabin['no_of_seat'] <= $seatSold + $seatRequest) {
-				//debug('flightid:' . $ResFlight['ResFlight']['flight_id'] . ' cabinId:' . $cabin['id'] . ' seats:' . (count($ResFlight['Reservation']['ResPassenger']) + $seatRequest) . ' flightIndex:' . $flightIndex . ' cabinIndex:' . $cabinIndex);
-				
+				//$logMsg = 'flightid:' . $ResFlight['ResFlight']['flight_id'] . ' cabinId:' . $cabin['id'] . ' seats:' . (count($ResFlight['Reservation']['ResPassenger']) + $seatRequest) . ' flightIndex:' . $flightIndex . ' cabinIndex:' . $cabinIndex  ;
+				//CakeLog::write('availlog', $logMsg);
 				unset($flights[$flightIndex]['Aircraft']['Cabin'][$cabinIndex]);
 				}	 
 				$cabinIndex++;	
@@ -207,26 +190,28 @@ class FlightsController extends AppController {
 	public function outbound_flights() {
 		$this->request_data_to_session();
 		
-		$this->FRSSession->delete('Flights.ResFlight.0');
-		$this->FRSSession->delete('Fares.ResFare.0');
+		$this->Session->delete('Flights.ResFlight.0');
+		$this->Session->delete('Fares.ResFare.0');
 		
-		$flights = $this->available_flights($this->FRSSession->read('Search.departure_airport'), $this->FRSSession->read('Search.arrival_airport'), $this->FRSSession->read('Search.departure_date'));
+		$flights = $this->available_flights($this->Session->read('Search.departure_airport'), $this->Session->read('Search.arrival_airport'), $this->Session->read('Search.departure_date'));
  
 		$cabins = $this->multi_array_unique($this->cabins_from_flights($flights));
 		
 		$this->set('cabins', $cabins);
 		$this->set('airports', array(
-			'from_airport' => $this->FRSSession->read('Search.departure_airport'), 
-			'to_airport' => $this->FRSSession->read('Search.arrival_airport')
+			'from_airport' => $this->Session->read('Search.departure_airport'), 
+			'to_airport' => $this->Session->read('Search.arrival_airport')
 		));
 		
-		$this->set('flight_date', $this->FRSSession->read('Search.departure_date'));
+		$this->set('flight_date', $this->Session->read('Search.departure_date'));
 		$this->set('radio_name', $this->outboundRadioName);
 		$this->set('action', 'set_outbound_flights');
 		$this->set('flights', $flights);
 		
 		$this->render('available_flights');
-
+		
+		//debug($cabins);
+		//debug($flights);
 	}
 	
 	public function set_outbound_flights ()
@@ -234,16 +219,16 @@ class FlightsController extends AppController {
 
 		list($flightId, $cabinId, $fareId) = explode('_', $this->request->data[$this->outboundRadioName]);
 		
-		$this->FRSSession->write('Flights.ResFlight.0.flight_id', $flightId);
-		$this->FRSSession->write('Flights.ResFlight.0.cabin_id', $cabinId);
-		$this->FRSSession->write('Flights.ResFlight.0.date', $this->request->data['Flights']['date']);
-		$this->FRSSession->write('Fares.ResFare.0.fare_id', $fareId);
+		$this->Session->write('Flights.ResFlight.0.flight_id', $flightId);
+		$this->Session->write('Flights.ResFlight.0.cabin_id', $cabinId);
+		$this->Session->write('Flights.ResFlight.0.date', $this->request->data['Flights']['date']);
+		$this->Session->write('Fares.ResFare.0.fare_id', $fareId);
 		
-		if ($this->FRSSession->read('Search.direction') == 'rt') {
+		if ($this->Session->read('Search.direction') == 'rt') {
 			$this->redirect('return_flights');
 		} else {
-			$this->FRSSession->delete('Flights.ResFlight.1');
-			$this->FRSSession->delete('Fares.ResFare.1');
+			$this->Session->delete('Flights.ResFlight.1');
+			$this->Session->delete('Fares.ResFare.1');
 			$this->redirect('/res_passengers/passenger_details');
 		};
 	}
@@ -253,19 +238,19 @@ class FlightsController extends AppController {
  * @return void
  */
 	public function return_flights() {
-		$this->FRSSession->delete('Flights.ResFlight.1');
-		$this->FRSSession->delete('Fares.ResFare.1');
+		$this->Session->delete('Flights.ResFlight.1');
+		$this->Session->delete('Fares.ResFare.1');
 		
-		$flights = $this->available_flights($this->FRSSession->read('Search.arrival_airport'), $this->FRSSession->read('Search.departure_airport'), $this->FRSSession->read('Search.arrival_date'));
+		$flights = $this->available_flights($this->Session->read('Search.arrival_airport'), $this->Session->read('Search.departure_airport'), $this->Session->read('Search.arrival_date'));
 		$cabins = $this->cabins_from_flights($flights);
 		
 		$this->set('cabins', $this->multi_array_unique($cabins));
 		$this->set('airports', array(
-			'from_airport' => $this->FRSSession->read('Search.arrival_airport'), 
-			'to_airport' => $this->FRSSession->read('Search.departure_airport')
+			'from_airport' => $this->Session->read('Search.arrival_airport'), 
+			'to_airport' => $this->Session->read('Search.departure_airport')
 		));
 		
-		$this->set('flight_date', $this->FRSSession->read('Search.arrival_date'));
+		$this->set('flight_date', $this->Session->read('Search.arrival_date'));
 		$this->set('radio_name', $this->returnRadioName);
 		$this->set('action', 'set_return_flights');
 		$this->set('flights', $flights);
@@ -279,13 +264,12 @@ class FlightsController extends AppController {
 		
 		list($flightId, $cabinId, $fareId) = explode('_', $this->request->data['sel_rt_fl']);
 		
-		$this->FRSSession->write('Flights.ResFlight.1.flight_id', $flightId);
-		$this->FRSSession->write('Flights.ResFlight.1.cabin_id', $cabinId);
-		$this->FRSSession->write('Flights.ResFlight.1.date', $this->request->data['Flights']['date']);
-		$this->FRSSession->write('Fares.ResFare.1.fare_id', $cabinId);
+		$this->Session->write('Flights.ResFlight.1.flight_id', $flightId);
+		$this->Session->write('Flights.ResFlight.1.cabin_id', $cabinId);
+		$this->Session->write('Flights.ResFlight.1.date', $this->request->data['Flights']['date']);
+		$this->Session->write('Fares.ResFare.1.fare_id', $cabinId);
 				
 		$this->redirect('/res_passengers/passenger_details');
 		
 	}
-	
 }

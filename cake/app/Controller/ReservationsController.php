@@ -41,10 +41,10 @@ class ReservationsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Reservation->create();
 			if ($this->Reservation->save($this->request->data)) {
-				$this->FRSSession->setFlash(__('The reservation has been saved'));
+				$this->Session->setFlash(__('The reservation has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->FRSSession->setFlash(__('The reservation could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The reservation could not be saved. Please, try again.'));
 			}
 		}
 	}
@@ -62,10 +62,10 @@ class ReservationsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Reservation->save($this->request->data)) {
-				$this->FRSSession->setFlash(__('The reservation has been saved'));
+				$this->Session->setFlash(__('The reservation has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->FRSSession->setFlash(__('The reservation could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The reservation could not be saved. Please, try again.'));
 			}
 		} else {
 			$this->request->data = $this->Reservation->read(null, $id);
@@ -87,10 +87,10 @@ class ReservationsController extends AppController {
 			throw new NotFoundException(__('Invalid reservation'));
 		}
 		if ($this->Reservation->delete()) {
-			$this->FRSSession->setFlash(__('Reservation deleted'));
+			$this->Session->setFlash(__('Reservation deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->FRSSession->setFlash(__('Reservation was not deleted'));
+		$this->Session->setFlash(__('Reservation was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 	
@@ -100,17 +100,17 @@ class ReservationsController extends AppController {
 			'pnr' => 'NEW'//,
 			//'is_active' => '1'
 			));
-		$booking = $booking + $this->FRSSession->read('Passengers');
-		$booking = $booking + $this->FRSSession->read('Flights');
-		$booking = $booking + $this->FRSSession->read('Fares');
-		$booking = $booking + $this->FRSSession->read('Payments');
+		$booking = $booking + $this->Session->read('Passengers');
+		$booking = $booking + $this->Session->read('Flights');
+		$booking = $booking + $this->Session->read('Fares');
+		$booking = $booking + $this->Session->read('Payments');
 				
 		$this->Reservation->create();
 		if ($this->Reservation->saveAssociated($booking)) {
-			$this->FRSSession->setFlash(__('The reservation has been saved'));
+			$this->Session->setFlash(__('The reservation has been saved'));
 			$this->redirect(array('action' => 'index'));
 		} else {
-			$this->FRSSession->setFlash(__('The reservation could not be saved. Please, try again.'));
+			$this->Session->setFlash(__('The reservation could not be saved. Please, try again.'));
 			$this->redirect(array('action' => 'index'));
 		}
 		
