@@ -25,6 +25,10 @@ class TestFlightsController extends FlightsController {
 	public function redirect($url, $status = null, $exit = true) {
 		$this->redirectUrl = $url;
 	}
+	
+	public function render($action = null, $layout = null, $file = null) {
+	        $this->renderedAction = $action;
+	    }
 }
 
 /**
@@ -49,6 +53,9 @@ class FlightsControllerTestCase extends ControllerTestCase {
 
 		$this->Flights = new TestFlightsController();
 		$this->Flights->constructClasses();
+		//$this->Flights->startupProcess();
+		//debug($this->Flights);
+		//$this->Flights->Components->init($this->Flights);
 
 
 	}
@@ -59,6 +66,7 @@ class FlightsControllerTestCase extends ControllerTestCase {
  * @return void
  */
 	public function tearDown() {
+		$this->Flights->shutdownProcess();
 		unset($this->Flights);
 
 		parent::tearDown();
@@ -232,20 +240,20 @@ class FlightsControllerTestCase extends ControllerTestCase {
 	public function setReturnFlights() {
 
 		$requestData = array(
-			'sel_ob_fl' => '1_1_1', 
+			'sel_rt_fl' => '1_1_1', 
 			'Flights' => array(
 				'date' => '2013-01-01'
 			)
 		);
 		$result = $this->testAction(
-			'flights/set_outbound_flights',
+			'flights/set_return_flights',
 			array('data' => $requestData, 'method' => 'post')
 		);
 		$this->assertStringEndsWith('passenger_details', $this->headers['Location']);
 	}	
 
 /**
- * requestDataToSession method
+ * requestDataToSessionValidation method
  * @test
  * @group unit
  * @return void
@@ -266,7 +274,41 @@ class FlightsControllerTestCase extends ControllerTestCase {
 			'flights/request_data_to_session',
 			array('data' => $requestData, 'method' => 'post')
 		);
+		
 		$this->assertEquals($result, false);
+
 	}
+	
+	
+/**
+ * returnFlightsDate method
+ * @test
+ * @group unit
+ * @return void
+ */
+	public function nice() {
+
+		$this->testAction(
+			'flights/outbound_flights',
+			array('data' => array(
+			    "Flights" => array(
+			            "Direction" => "rt",
+			            "Departure Airport" => "ABC",
+			            "Arrival Airport" => "DEF",
+			            "Departure Date" => "07/15/2012",
+			            "Return Date" => "08/15/2012",
+			            "Number of Passengers" => 1
+			        )
+			), 'method' => 'post')
+		);
+		$this->testAction('flights/set_outbound_flights', array('data' => array(
+			'sel_ob_fl' => '1_1_1', 
+			'Flights' => array(
+				'date' => '2012-08-15'
+			)
+		)));
+		$result = $this->testAction('flights/return_flights', array('return' => 'vars'));
+		$this->assertEquals($result['flight_date'], '08/15/2012');
+	}	
 	
 }

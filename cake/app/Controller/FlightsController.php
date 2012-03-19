@@ -221,7 +221,7 @@ class FlightsController extends AppController {
 	public function outbound_flights() {
 		if (!$this->request_data_to_session()) {
 			$this->Session->setFlash(__('Please enter all search parameters.'));
-			$this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
+			return $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
 		} 
 
 		$this->Session->delete('Flights.ResFlight.0');

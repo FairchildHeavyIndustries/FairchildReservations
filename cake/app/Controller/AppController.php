@@ -59,7 +59,7 @@ class AppController extends Controller {
 	 */
 	public function request_data_to_session()
 	{
-		
+		$this->Session->delete('Search');
 		if (
 			$this->request->data['Flights']['Departure Airport']  &&
 			$this->request->data['Flights']['Arrival Airport']  &&
