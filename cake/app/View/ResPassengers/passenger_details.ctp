@@ -17,7 +17,7 @@
 			echo $this->Form->input('ResPassenger.'  . $pax_index . '.last_name');
 			echo $this->Form->input('ResPassenger.'  . $pax_index . '.telephone');
 			echo $this->Form->input('ResPassenger.'  . $pax_index . '.email');
-			echo $this->Form->input('ResPassenger.'  . $pax_index . '.birth_date', array(
+			echo $this->Form->input('ResPassenger.'  . $pax_index . '.date_of_birth', array(
 				'type'	=> 'text',
 				'class' => 'calendar_input',
 				'id'	=> 'birth_date_' . $pax_index 

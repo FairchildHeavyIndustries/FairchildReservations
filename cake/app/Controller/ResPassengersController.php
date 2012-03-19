@@ -107,15 +107,13 @@ class ResPassengersController extends AppController {
 	public function set_passenger_details () {
 		
 		$this->Session->write('Passengers', $this->request->data);
-		/*
+	
 		$pax_index = 0;
-		foreach ($this->Session->read('Passengers.ResPassenger') as $ResPasssenger) {
-			$this->Session->write('Passengers.ResPassenger.' . $pax_index . '.birth_date', $this->Time->format('Y-m-d', $ResPassenger['birth_date']));
+		foreach ($this->Session->read('Passengers.ResPassenger') as $ResPassenger) {
+			$this->Session->write('Passengers.ResPassenger.' . $pax_index . '.date_of_birth', $this->date_to_sql_date($ResPassenger['date_of_birth']));
 			$pax_index++; 
 		}
-		*/		
+				
 		$this->redirect('/res_cc_payments/payment_details');
-
-		
 	}
 }
