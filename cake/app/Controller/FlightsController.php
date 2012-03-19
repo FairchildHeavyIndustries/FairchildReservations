@@ -208,7 +208,7 @@ class FlightsController extends AppController {
 		$availableOutboundFlights = $this->available_flights(
 	 		$this->Session->read('Search.arrival_airport'), 
 			$this->Session->read('Search.departure_airport'), 
-			$this->date_to_sql_date($this->Session->read('Search.arrival_date'))
+			$this->date_to_sql_date($this->Session->read('Search.return_date'))
 		);
 		return $availableOutboundFlights;
  }
