@@ -220,7 +220,7 @@ class FlightsController extends AppController {
  */
 	public function outbound_flights() {
 		$this->request_data_to_session();
-		
+
 		$this->Session->delete('Flights.ResFlight.0');
 		$this->Session->delete('Fares.ResFare.0');
 		
@@ -281,7 +281,7 @@ class FlightsController extends AppController {
 			'to_airport' => $this->Session->read('Search.departure_airport')
 		));
 		
-		$this->set('flight_date', $this->Session->read('Search.arrival_date'));
+		$this->set('flight_date', $this->Session->read('Search.return_date'));
 		$this->set('radio_name', $this->returnRadioName);
 		$this->set('action', 'set_return_flights');
 		$this->set('flights', $flights);

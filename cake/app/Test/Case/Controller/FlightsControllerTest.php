@@ -244,5 +244,5 @@ class FlightsControllerTestCase extends ControllerTestCase {
 		$this->assertStringEndsWith('passenger_details', $this->headers['Location']);
 	}	
 	
-	
+
 }
