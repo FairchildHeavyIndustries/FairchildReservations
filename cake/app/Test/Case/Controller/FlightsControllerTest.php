@@ -283,10 +283,10 @@ class FlightsControllerTestCase extends ControllerTestCase {
 /**
  * returnFlightsDate method
  * @test
- * @group unit
+ * @group acceptance
  * @return void
  */
-	public function nice() {
+	public function returnFlightsDate() {
 
 		$this->testAction(
 			'flights/outbound_flights',
