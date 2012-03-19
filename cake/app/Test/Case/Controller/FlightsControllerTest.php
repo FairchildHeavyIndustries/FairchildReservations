@@ -243,6 +243,30 @@ class FlightsControllerTestCase extends ControllerTestCase {
 		);
 		$this->assertStringEndsWith('passenger_details', $this->headers['Location']);
 	}	
-	
 
+/**
+ * requestDataToSession method
+ * @test
+ * @group unit
+ * @return void
+ */
+	public function requestDataToSessionValidation() {
+
+		$requestData = array(
+		    "Flights" => array(
+		            "Direction" => "rt",
+		            "Departure Airport" => "MIA",
+		            "Arrival Airport" => "SDQ",
+		            "Departure Date" => "",
+		            "Return Date" => "",
+		            "Number of Passengers" => 1
+		        )
+		);
+		$result = $this->testAction(
+			'flights/request_data_to_session',
+			array('data' => $requestData, 'method' => 'post')
+		);
+		$this->assertEquals($result, false);
+	}
+	
 }

@@ -59,12 +59,25 @@ class AppController extends Controller {
 	 */
 	public function request_data_to_session()
 	{
-		$this->Session->write('Search.departure_airport', $this->request->data['Flights']['Departure Airport']);
-		$this->Session->write('Search.arrival_airport', $this->request->data['Flights']['Arrival Airport']);
-		$this->Session->write('Search.departure_date', $this->request->data['Flights']['Departure Date']);
-		$this->Session->write('Search.return_date', $this->request->data['Flights']['Return Date']);
-		$this->Session->write('Search.direction', $this->request->data['Flights']['Direction']);
-		$this->Session->write('Search.number_of_passengers', $this->request->data['Flights']['Number of Passengers']);
+		
+		if (
+			$this->request->data['Flights']['Departure Airport']  &&
+			$this->request->data['Flights']['Arrival Airport']  &&
+			$this->request->data['Flights']['Departure Date']  &&
+			$this->request->data['Flights']['Return Date']  &&
+			$this->request->data['Flights']['Direction']  &&
+			$this->request->data['Flights']['Number of Passengers']  
+		) {
+			$this->Session->write('Search.departure_airport', $this->request->data['Flights']['Departure Airport']);
+			$this->Session->write('Search.arrival_airport', $this->request->data['Flights']['Arrival Airport']);
+			$this->Session->write('Search.departure_date', $this->request->data['Flights']['Departure Date']);
+			$this->Session->write('Search.return_date', $this->request->data['Flights']['Return Date']);
+			$this->Session->write('Search.direction', $this->request->data['Flights']['Direction']);
+			$this->Session->write('Search.number_of_passengers', $this->request->data['Flights']['Number of Passengers']);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	function multi_array_unique($array)
