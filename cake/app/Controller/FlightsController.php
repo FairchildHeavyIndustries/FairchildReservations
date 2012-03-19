@@ -119,7 +119,7 @@ class FlightsController extends AppController {
 	}
 
 	/**
-	 * available flights method
+	 * available_flights method
 	 *
 	 * @param string $departure_airport, string $arrival_airport, string $flight_date
 	 * @return array $flights
@@ -145,9 +145,9 @@ class FlightsController extends AppController {
 		$this->ResFlight->recursive = 2;
 		$ResFlights = $this->ResFlight->find('all', array(
 			'conditions'=> array(
-				'ResFlight.date' => $this->date_to_sql_date($flight_date)
+				'ResFlight.date' => $flight_date)
 			)
-		));
+		);
 
 		$seatRequest = $this->Session->read('Search.number_of_passengers'); 
 		$flightIndex=0;
@@ -182,8 +182,39 @@ class FlightsController extends AppController {
 		
 	}
 
+
 /**
- * available_outbound_flights method
+ * get_available_outbound_flights method
+ *
+ * @return array
+ */
+ public function getAvailableOutboundFlights()
+ {
+		$availableOutboundFlights = $this->available_flights(
+	 		$this->Session->read('Search.departure_airport'), 
+			$this->Session->read('Search.arrival_airport'), 
+			$this->date_to_sql_date($this->Session->read('Search.departure_date'))
+		);
+		return $availableOutboundFlights;
+ }
+
+/**
+ * get_available_return_flights method
+ *
+ * @return array
+ */
+ public function getAvailableReturnFlights()
+ {
+		$availableOutboundFlights = $this->available_flights(
+	 		$this->Session->read('Search.arrival_airport'), 
+			$this->Session->read('Search.departure_airport'), 
+			$this->date_to_sql_date($this->Session->read('Search.arrival_date'))
+		);
+		return $availableOutboundFlights;
+ }
+
+/**
+ * outbound_flights method
  *
  * @return void
  */
@@ -193,7 +224,7 @@ class FlightsController extends AppController {
 		$this->Session->delete('Flights.ResFlight.0');
 		$this->Session->delete('Fares.ResFare.0');
 		
-		$flights = $this->available_flights($this->Session->read('Search.departure_airport'), $this->Session->read('Search.arrival_airport'), $this->Session->read('Search.departure_date'));
+		$flights = $this->getAvailableOutboundFlights();
  
 		$cabins = $this->multi_array_unique($this->cabins_from_flights($flights));
 		
@@ -241,7 +272,7 @@ class FlightsController extends AppController {
 		$this->Session->delete('Flights.ResFlight.1');
 		$this->Session->delete('Fares.ResFare.1');
 		
-		$flights = $this->available_flights($this->Session->read('Search.arrival_airport'), $this->Session->read('Search.departure_airport'), $this->Session->read('Search.arrival_date'));
+		$flights = $this->getAvailableReturnFlights();
 		$cabins = $this->cabins_from_flights($flights);
 		
 		$this->set('cabins', $this->multi_array_unique($cabins));
@@ -262,7 +293,7 @@ class FlightsController extends AppController {
 	public function set_return_flights ()
 	{
 		
-		list($flightId, $cabinId, $fareId) = explode('_', $this->request->data['sel_rt_fl']);
+		list($flightId, $cabinId, $fareId) = explode('_', $this->request->data[$this->returnRadioName]);
 		
 		$this->Session->write('Flights.ResFlight.1.flight_id', $flightId);
 		$this->Session->write('Flights.ResFlight.1.cabin_id', $cabinId);

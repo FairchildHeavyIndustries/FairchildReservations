@@ -62,7 +62,7 @@ App::uses('Debugger', 'Utility');
 						'class' => 'calendar_input',
 						'id'	=> 'departure_date'
 					));
-					echo $this->Form->input('Arrival Date', array(
+					echo $this->Form->input('Return Date', array(
 						'type'	=> 'text',
 						'class' => 'calendar_input',
 						'id'	=> 'arrival_date'

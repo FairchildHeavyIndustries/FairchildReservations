@@ -47,7 +47,7 @@ class AppController extends Controller {
 	
 	public function weekday_from_date ($input_date)
 	{
-		list($month, $day, $year) = explode('/', $input_date);
+		list($year, $month, $day) = explode('-', $input_date);
 
 		$cal_datetime = mktime(0, 0, 0, $month, $day, $year);
 		
@@ -62,7 +62,7 @@ class AppController extends Controller {
 		$this->Session->write('Search.departure_airport', $this->request->data['Flights']['Departure Airport']);
 		$this->Session->write('Search.arrival_airport', $this->request->data['Flights']['Arrival Airport']);
 		$this->Session->write('Search.departure_date', $this->request->data['Flights']['Departure Date']);
-		$this->Session->write('Search.arrival_date', $this->request->data['Flights']['Arrival Date']);
+		$this->Session->write('Search.return_date', $this->request->data['Flights']['Return Date']);
 		$this->Session->write('Search.direction', $this->request->data['Flights']['Direction']);
 		$this->Session->write('Search.number_of_passengers', $this->request->data['Flights']['Number of Passengers']);
 	}
@@ -102,7 +102,7 @@ class AppController extends Controller {
 	public function date_to_sql_date ($input_date)
 	{
 		list($month, $day, $year) = explode("/", $input_date);
-		$sql_date = $year . '_' . $month . '_' . $day;
+		$sql_date = $year . '-' . $month . '-' . $day;
 		return $sql_date;
 	}
 }
