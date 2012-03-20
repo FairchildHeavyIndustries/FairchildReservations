@@ -104,7 +104,7 @@ class ReservationsControllerTestCase extends ControllerTestCase {
 				'Reservation' => array('find')
 			)
 		));
-		$mockReply = array(array('pnr' => 'BBBBZZ'));
+		$mockReply = array('Reservation' => array('pnr' => 'BBBBZZ'));
 		
 		$mockResController->Reservation
 		    ->expects($this->once())
@@ -129,7 +129,7 @@ class ReservationsControllerTestCase extends ControllerTestCase {
 				'Reservation' => array('find')
 			)
 		));
-		$mockReply = array(array('pnr' => 'ZZZZZZ'));
+		$mockReply = array('Reservation' => array('pnr' => 'ZZZZZZ'));
 
 		$mockResController->Reservation
 		    ->expects($this->once())
@@ -139,6 +139,32 @@ class ReservationsControllerTestCase extends ControllerTestCase {
 		$newPNR = $this->Reservations->generatePNR();
 		$this->assertEquals($newPNR, 'BBBBBB');
 	}
+
+/**
+ * initPNR method
+ * 
+ * @test
+ * @group unit
+ * @return void
+ */
+	public function initPNR()
+	{	
+		$mockResController = $this->generate('Reservations', array(
+			'models' => array(
+				'Reservation' => array('find')
+			)
+		));
+		$mockReply = array('Reservation' => array('pnr' => 'NEW'));
+
+		$mockResController->Reservation
+		    ->expects($this->once())
+		    ->method('find')
+		    ->will($this->returnValue($mockReply));
+
+		$newPNR = $this->Reservations->generatePNR();
+		$this->assertEquals($newPNR, 'BBBBBB');
+	}
+
 
 
 }

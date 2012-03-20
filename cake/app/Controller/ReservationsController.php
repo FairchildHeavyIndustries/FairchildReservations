@@ -13,7 +13,18 @@ class ReservationsController extends AppController {
  * @var array
  */
 	public $uses = array('Reservation');
+	
+	
+/**
+ * Pagination settings
+ */
 
+	public $paginate = array(
+        'limit' => 25,
+        'order' => array(
+            'Reservation.id' => 'desc'
+        )
+    );
 /**
  * index method
  *
@@ -49,8 +60,7 @@ class ReservationsController extends AppController {
 	public function confirm_booking ()
 	{
 		$booking = array('Reservation' => array(
-			'pnr' => 'NEW'//,
-			//'is_active' => '1'
+			'pnr' => $this->generatePNR()
 			));
 		$booking = $booking + $this->Session->read('Passengers');
 		$booking = $booking + $this->Session->read('Flights');
@@ -80,12 +90,18 @@ class ReservationsController extends AppController {
 	{
 		$characterMap = str_split('BCDFJHJKLMNPQRSTVWXYZ');
 		$newPNR = "";
-
-		$maxPNR = $this->Reservation->find('first', array(
-			'fields' => array('MAX(Reservation.pnr) as pnr' ),
+		
+		$maxPNRArray = $this->Reservation->find('first', array(
+			'fields'	=> array('Reservation.pnr as pnr'),
+			'order'		=> array('Reservation.id DESC')
 		));
 
-		foreach (str_split($maxPNR[0]['pnr']) as $currLetter) {
+		$maxPNR = $maxPNRArray['Reservation']['pnr'];
+		
+		if (strlen($maxPNR) < 6) {
+			return "BBBBBB";
+		}
+		foreach (str_split($maxPNR) as $currLetter) {
 			$numPNR[] = array_search($currLetter, $characterMap);
 		}
 		
