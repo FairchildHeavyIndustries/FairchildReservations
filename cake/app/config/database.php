@@ -67,9 +67,19 @@ class DATABASE_CONFIG {
 		'password' => 'dev_frs',
 		'database' => 'devfrsdb',
 		'prefix' => '',
-		//'encoding' => 'utf8',
+		'encoding' => 'utf8'
 	);
-
+	
+	public $qafrsdb = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => '127.0.0.1',
+		'login' => 'qa_frs',
+		'password' => 'qa_frs',
+		'database' => 'qafrsdb',
+		'encoding' => 'utf8'
+	);
+	
 	public $test = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
@@ -78,6 +88,6 @@ class DATABASE_CONFIG {
 		'password' => 'test_frs',
 		'database' => 'testfrsdb',
 		'prefix' => '',
-		//'encoding' => 'utf8',
+		'encoding' => 'utf8'
 	);
 }
