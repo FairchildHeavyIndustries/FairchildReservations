@@ -61,19 +61,19 @@ class AppController extends Controller {
 	{
 		$this->Session->delete('Search');
 		if (
-			$this->request->data['Flights']['Departure Airport']  &&
-			$this->request->data['Flights']['Arrival Airport']  &&
-			$this->request->data['Flights']['Departure Date']  &&
-			$this->request->data['Flights']['Return Date']  &&
-			$this->request->data['Flights']['Direction']  &&
-			$this->request->data['Flights']['Number of Passengers']  
+			$this->request->data['Flights']['departure_airport']  &&
+			$this->request->data['Flights']['arrival_airport']  &&
+			$this->request->data['Flights']['departure_date']  &&
+			$this->request->data['Flights']['return_date']  &&
+			$this->request->data['Flights']['direction']  &&
+			$this->request->data['Flights']['number_of_passengers']  
 		) {
-			$this->Session->write('Search.departure_airport', $this->request->data['Flights']['Departure Airport']);
-			$this->Session->write('Search.arrival_airport', $this->request->data['Flights']['Arrival Airport']);
-			$this->Session->write('Search.departure_date', $this->request->data['Flights']['Departure Date']);
-			$this->Session->write('Search.return_date', $this->request->data['Flights']['Return Date']);
-			$this->Session->write('Search.direction', $this->request->data['Flights']['Direction']);
-			$this->Session->write('Search.number_of_passengers', $this->request->data['Flights']['Number of Passengers']);
+			$this->Session->write('Search.departure_airport', $this->request->data['Flights']['departure_airport']);
+			$this->Session->write('Search.arrival_airport', $this->request->data['Flights']['arrival_airport']);
+			$this->Session->write('Search.departure_date', $this->request->data['Flights']['departure_date']);
+			$this->Session->write('Search.return_date', $this->request->data['Flights']['return_date']);
+			$this->Session->write('Search.direction', $this->request->data['Flights']['direction']);
+			$this->Session->write('Search.number_of_passengers', $this->request->data['Flights']['number_of_passengers']);
 			return true;
 		} else {
 			return false;

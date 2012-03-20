@@ -262,12 +262,12 @@ class FlightsControllerTestCase extends ControllerTestCase {
 
 		$requestData = array(
 		    "Flights" => array(
-		            "Direction" => "rt",
-		            "Departure Airport" => "MIA",
-		            "Arrival Airport" => "SDQ",
-		            "Departure Date" => "",
-		            "Return Date" => "",
-		            "Number of Passengers" => 1
+		            "direction" => "rt",
+		            "departure_airport" => "MIA",
+		            "arrival_airport" => "SDQ",
+		            "departure_date" => "",
+		            "return_date" => "",
+		            "number_of_Passengers" => 1
 		        )
 		);
 		$result = $this->testAction(
@@ -292,12 +292,12 @@ class FlightsControllerTestCase extends ControllerTestCase {
 			'flights/outbound_flights',
 			array('data' => array(
 			    "Flights" => array(
-			            "Direction" => "rt",
-			            "Departure Airport" => "ABC",
-			            "Arrival Airport" => "DEF",
-			            "Departure Date" => "07/15/2012",
-			            "Return Date" => "08/15/2012",
-			            "Number of Passengers" => 1
+			            "direction" => "rt",
+			            "departure_airport" => "ABC",
+			            "arrival_airport" => "DEF",
+			            "departure_date" => "07/15/2012",
+			            "return_date" => "08/15/2012",
+			            "number_of_passengers" => 1
 			        )
 			), 'method' => 'post')
 		);
@@ -310,5 +310,29 @@ class FlightsControllerTestCase extends ControllerTestCase {
 		$result = $this->testAction('flights/return_flights', array('return' => 'vars'));
 		$this->assertEquals($result['flight_date'], '08/15/2012');
 	}	
-	
+
+/**
+ * cantSubmitWithoutSelectingOutboundFlights method
+ * @test
+ * @group unit
+ * @return void
+ */
+	public function cantSubmitWithoutSelectingOutboundFlights() {
+
+		$result = $this->testAction('flights/set_outbound_flights', array('return' => 'vars'));
+		$this->assertEquals('set_outbound_flights', $result['action']);
+	}	
+
+/**
+ * cantSubmitWithoutSelectingReturnFlights method
+ * @test
+ * @group unit
+ * @return void
+ */
+	public function cantSubmitWithoutSelectingReturnFlights() {
+
+		$result = $this->testAction('flights/set_return_flights', array('return' => 'vars'));
+		$this->assertEquals('set_return_flights', $result['action']);
+	}	
+
 }

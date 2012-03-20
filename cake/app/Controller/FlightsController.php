@@ -129,7 +129,6 @@ class FlightsController extends AppController {
 			$this->Session->setFlash(__('Please enter all search parameters.'));
 			return $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
 		} 
-
 		$this->Session->delete('Flights.ResFlight.0');
 		$this->Session->delete('Fares.ResFare.0');
 		
@@ -150,13 +149,16 @@ class FlightsController extends AppController {
 		
 		$this->render('available_flights');
 		
-		//debug($cabins);
-		//debug($flights);
 	}
 	
 	public function set_outbound_flights ()
 	{
-
+		if (!array_key_exists($this->outboundRadioName, $this->request->data)) {
+			$this->Session->setFlash(__('Please select a flight and cabin.'));
+			$this->request->data['Flights'] = $this->Session->read('Search');
+			return $this->setAction('outbound_flights');
+		} 
+		
 		list($flightId, $cabinId, $fareId) = explode('_', $this->request->data[$this->outboundRadioName]);
 		
 		$this->Session->write('Flights.ResFlight.0.flight_id', $flightId);
@@ -201,6 +203,10 @@ class FlightsController extends AppController {
 
 	public function set_return_flights ()
 	{
+		if (!array_key_exists($this->returnRadioName, $this->request->data)) {
+			$this->Session->setFlash(__('Please select a flight and cabin.'));
+			return $this->setAction('return_flights');
+		}
 		
 		list($flightId, $cabinId, $fareId) = explode('_', $this->request->data[$this->returnRadioName]);
 		

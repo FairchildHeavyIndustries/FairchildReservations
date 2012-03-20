@@ -36,42 +36,43 @@ App::uses('Debugger', 'Utility');
 					
 					echo $this->Form->create('Flights', array('action' => 'outbound_flights' )); 
 					
-					echo $this->Form->radio('Direction', array(
+					echo $this->Form->radio('direction', array(
 						'ow'	=> 'One Way',
 						'rt' 	=> 'Round Trip',
 						), array(
 							'value' => 'rt',
-							'id' => 'one_way',
 							'legend' => false
 						)
 					);
 					
-					echo $this->Form->input('Departure Airport', array(
+					echo $this->Form->input('departure_airport', array(
 						'type'    => 'select',
 						'options' => $departure_airport_list,
-						'empty'   => true
+						'empty'   => true,
+						'label'	=> 'Departure Airport'
 					));
 					
-					echo $this->Form->input('Arrival Airport', array(
+					echo $this->Form->input('arrival_airport', array(
 						'type'    => 'select',
 						'options' => $arrival_airport_list,
-						'empty'   => true
+						'empty'   => true,
+						'label'	=> 'Arrival Airport'
 					));
-					echo $this->Form->input('Departure Date', array(
+					echo $this->Form->input('departure_date', array(
 						'type'	=> 'text',
 						'class' => 'calendar_input',
-						'id'	=> 'departure_date'
+						'label'	=> 'Departure Date'
 					));
-					echo $this->Form->input('Return Date', array(
+					echo $this->Form->input('return_date', array(
 						'type'	=> 'text',
 						'class' => 'calendar_input',
-						'id'	=> 'arrival_date'
+						'label'	=> 'Return Date'
 					));
 					
-					echo $this->Form->input('Number of Passengers', array(
+					echo $this->Form->input('number_of_passengers', array(
 						'type'    => 'select',
 						'options' => array('1' => '1', '2'=> '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6'),
-						'id'	=> 'number_of_passengers'
+						'id'	=> 'Number of Passengers'
 					));
 					
 					echo $this->Form->end('Search'); 
