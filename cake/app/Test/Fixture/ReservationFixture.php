@@ -29,7 +29,13 @@ class ReservationFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'pnr' => 'Lore',
+			'pnr' => 'BBZBBB',
+			'is_active' => 1,
+			'created_date' => 1329168953
+		),
+		array(
+			'id' => 99,
+			'pnr' => 'BCDFJK',
 			'is_active' => 1,
 			'created_date' => 1329168953
 		),

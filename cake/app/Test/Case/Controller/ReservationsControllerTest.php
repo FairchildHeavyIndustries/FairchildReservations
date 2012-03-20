@@ -30,13 +30,13 @@ class TestReservationsController extends ReservationsController {
  * ReservationsController Test Case
  *
  */
-class ReservationsControllerTestCase extends CakeTestCase {
+class ReservationsControllerTestCase extends ControllerTestCase {
 /**
  * Fixtures
  *
  * @var array
  */
-	public $fixtures = array('app.reservation', 'app.customer', 'app.res_fare', 'app.res_fee', 'app.res_flight', 'app.res_hotel', 'app.res_tax');
+	public $fixtures = array('app.reservation', 'app.res_passenger', 'app.res_fare', 'app.res_fee', 'app.res_flight', 'app.res_hotel', 'app.res_tax');
 
 /**
  * setUp method
@@ -62,48 +62,83 @@ class ReservationsControllerTestCase extends CakeTestCase {
 	}
 
 /**
- * testIndex method
- *
+ * viewReservation method
+ * 
+ * @test
+ * @group unit
  * @return void
  */
-	public function testIndex() {
+	public function viewReservation()
+	{	
+		$result = $this->testAction('reservations/view/99', array('return' => 'vars'));
+		$this->assertEquals($result['reservation']['Reservation']['pnr'], 'BCDFJK');
+		
+	}
 
+
+/**
+ * testGeneratePNR method
+ * 
+ * @test
+ * @group unit
+ * @return void
+ */
+	public function testGeneratePNR()
+	{	
+		$newPNR = $this->Reservations->generatePNR();
+		$this->assertEquals($newPNR, 'BCDFJL');
+		$this->assertRegExp("/[BCDFJHJKLMNPQRSTVWXYZ]{6}/", $newPNR);
 	}
 
 /**
- * testView method
- *
+ * doubleLetterUpdate method
+ * 
+ * @test
+ * @group unit
  * @return void
  */
-	public function testView() {
-
+	public function doubleLetterUpdate()
+	{	
+		$mockResController = $this->generate('Reservations', array(
+			'models' => array(
+				'Reservation' => array('find')
+			)
+		));
+		$mockReply = array(array('pnr' => 'BBBBZZ'));
+		
+		$mockResController->Reservation
+		    ->expects($this->once())
+		    ->method('find')
+		    ->will($this->returnValue($mockReply));
+		
+		$newPNR = $this->Reservations->generatePNR();
+		$this->assertEquals($newPNR, 'BBBCBB');
 	}
 
 /**
- * testAdd method
- *
+ * generatePNRRollover method
+ * 
+ * @test
+ * @group unit
  * @return void
  */
-	public function testAdd() {
+	public function generatePNRRollover()
+	{	
+		$mockResController = $this->generate('Reservations', array(
+			'models' => array(
+				'Reservation' => array('find')
+			)
+		));
+		$mockReply = array(array('pnr' => 'ZZZZZZ'));
 
+		$mockResController->Reservation
+		    ->expects($this->once())
+		    ->method('find')
+		    ->will($this->returnValue($mockReply));
+
+		$newPNR = $this->Reservations->generatePNR();
+		$this->assertEquals($newPNR, 'BBBBBB');
 	}
 
-/**
- * testEdit method
- *
- * @return void
- */
-	public function testEdit() {
-
-	}
-
-/**
- * testDelete method
- *
- * @return void
- */
-	public function testDelete() {
-
-	}
 
 }

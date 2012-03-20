@@ -7,6 +7,12 @@ App::uses('AppController', 'Controller');
  */
 class ReservationsController extends AppController {
 
+/**
+ * other models
+ *
+ * @var array
+ */
+	public $uses = array('Reservation');
 
 /**
  * index method
@@ -32,68 +38,14 @@ class ReservationsController extends AppController {
 		$this->set('reservation', $this->Reservation->read(null, $id));
 	}
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Reservation->create();
-			if ($this->Reservation->save($this->request->data)) {
-				$this->Session->setFlash(__('The reservation has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The reservation could not be saved. Please, try again.'));
-			}
-		}
-	}
 
 /**
- * edit method
+ * confirm_booking method
  *
+ * Gets a new PNR, collates all the res_* data, and saves a booking object.
  * @param string $id
  * @return void
- */
-	public function edit($id = null) {
-		$this->Reservation->id = $id;
-		if (!$this->Reservation->exists()) {
-			throw new NotFoundException(__('Invalid reservation'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Reservation->save($this->request->data)) {
-				$this->Session->setFlash(__('The reservation has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The reservation could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->request->data = $this->Reservation->read(null, $id);
-		}
-	}
-
-/**
- * delete method
- *
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
-		$this->Reservation->id = $id;
-		if (!$this->Reservation->exists()) {
-			throw new NotFoundException(__('Invalid reservation'));
-		}
-		if ($this->Reservation->delete()) {
-			$this->Session->setFlash(__('Reservation deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Reservation was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-	
+ */	
 	public function confirm_booking ()
 	{
 		$booking = array('Reservation' => array(
@@ -108,11 +60,51 @@ class ReservationsController extends AppController {
 		$this->Reservation->create();
 		if ($this->Reservation->saveAssociated($booking)) {
 			$this->Session->setFlash(__('The reservation has been saved'));
-			$this->redirect(array('action' => 'index'));
+			return $this->redirect(array('action' => 'index'));
 		} else {
 			$this->Session->setFlash(__('The reservation could not be saved. Please, try again.'));
-			$this->redirect(array('action' => 'index'));
+			return $this->redirect(array('action' => 'index'));
 		}
 		
+	}
+	
+/**
+ * generatePNR method
+ *
+ * Generates a unique ALPHA record locator (PNR). 
+ * @param string $id
+ * @return string $newPNR
+ */	
+
+	public function generatePNR()
+	{
+		$characterMap = str_split('BCDFJHJKLMNPQRSTVWXYZ');
+		$newPNR = "";
+
+		$maxPNR = $this->Reservation->find('first', array(
+			'fields' => array('MAX(Reservation.pnr) as pnr' ),
+		));
+
+		foreach (str_split($maxPNR[0]['pnr']) as $currLetter) {
+			$numPNR[] = array_search($currLetter, $characterMap);
+		}
+		
+		$numPNR[5] = $numPNR[5] + 1;
+
+		for ($i=5; $i >= 0; $i--) { 
+			if ($numPNR[$i] == 21) {
+				$numPNR[$i] = 0;
+				if ($i > 0) {
+					$numPNR[$i-1] = ($numPNR[$i-1] + 1); 
+				}
+				
+			}
+		}
+		
+		foreach ($numPNR as $currKey) {
+			$newPNR = $newPNR . $characterMap[$currKey];
+		}
+
+		return $newPNR;
 	}
 }

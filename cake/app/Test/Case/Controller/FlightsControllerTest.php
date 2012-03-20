@@ -53,10 +53,6 @@ class FlightsControllerTestCase extends ControllerTestCase {
 
 		$this->Flights = new TestFlightsController();
 		$this->Flights->constructClasses();
-		//$this->Flights->startupProcess();
-		//debug($this->Flights);
-		//$this->Flights->Components->init($this->Flights);
-
 
 	}
 
@@ -66,7 +62,6 @@ class FlightsControllerTestCase extends ControllerTestCase {
  * @return void
  */
 	public function tearDown() {
-		$this->Flights->shutdownProcess();
 		unset($this->Flights);
 
 		parent::tearDown();
