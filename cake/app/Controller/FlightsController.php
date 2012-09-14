@@ -213,7 +213,7 @@ class FlightsController extends AppController {
 		$this->Session->write('Flights.ResFlight.1.flight_id', $flightId);
 		$this->Session->write('Flights.ResFlight.1.cabin_id', $cabinId);
 		$this->Session->write('Flights.ResFlight.1.date', $this->request->data['Flights']['date']);
-		$this->Session->write('Fares.ResFare.1.fare_id', $cabinId);
+		$this->Session->write('Fares.ResFare.1.fare_id', $fareId);
 				
 		$this->redirect('/res_passengers/passenger_details');
 		

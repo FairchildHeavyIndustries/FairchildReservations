@@ -105,7 +105,6 @@ class ResPassengersController extends AppController {
 	}
 	
 	public function set_passenger_details () {
-		
 		$this->Session->write('Passengers', $this->request->data);
 	
 		$pax_index = 0;

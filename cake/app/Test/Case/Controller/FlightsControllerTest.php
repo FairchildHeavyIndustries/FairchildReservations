@@ -82,7 +82,7 @@ class FlightsControllerTestCase extends ControllerTestCase {
 
 
 /**
- * testArrayToSelectList method
+ * weekdayFromDate method
  * @group unit
  * @test
  * @return void

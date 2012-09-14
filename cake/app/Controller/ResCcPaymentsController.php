@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class ResCcPaymentsController extends AppController {
 
-
+	public $uses = array('ResCcPayment', 'CardIssuer', 'Route', 'Tax', 'Fare');
 /**
  * index method
  *
@@ -101,7 +101,32 @@ class ResCcPaymentsController extends AppController {
 	}
 	
 	
+	public function price_breakdown()
+	{
+		foreach ($this->Session->read('Fares.ResFare') as $ResFare) {
+			$currFare =  $this->Fare->find('all', array('conditions' => array('Fare.id' => $ResFare['fare_id'])));
+			$currRoute = $this->Route->find('all', array('conditions' => array('Route.id' => $currFare[0]['Fare']['route_id'])));
+			$currTax = $this->Tax->find('all', array('conditions' => array('Tax.route_id' => $currFare[0]['Fare']['route_id'])));
+			$Price[] = array('Type' => 'Fare', 'Description' => $currRoute[0]['Route']['description'], 'amount' => $currFare[0]['Fare']['amount']);
+			if ($currTax) {
+				$Price[] = array('Type' => 'Tax', 'Description' => $currTax[0]['Tax']['name'], 'amount' => ($currTax[0]['Tax']['amount']) * ($currFare[0]['Fare']['amount']));
+			}
+		}
+		return $Price;
+	}
 	
+	public function total_price (array $breakdown)
+	{
+		foreach ($breakdown as $p) {
+			$amount = $p['amount'];
+			if (isset($total)) {
+				$total += $amount;
+			} else {
+				$total = $amount;
+			}
+		}
+		return $total;
+	}
 	
 	public function payment_details () {
 		
@@ -109,10 +134,12 @@ class ResCcPaymentsController extends AppController {
 		$card_issuers = $this->ResCcPayment->CardIssuer->find('list');
 		
 		$this->set('cardIssuers', $card_issuers);
-		$this->set('the_input', $this->request->data);	
-
+		//$this->set('the_input', $this->request->data);	
+		$breakdown = $this->price_breakdown();
+		$total = $this->total_price($breakdown);
+		$this->set('Pricing', $breakdown);
+		$this->set('Total', $total);
 		$this->render('payment_details');
-		
 	}
 	
 	public function set_cc_payment()

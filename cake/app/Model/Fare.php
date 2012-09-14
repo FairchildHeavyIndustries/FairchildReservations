@@ -71,13 +71,6 @@ class Fare extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		),
-		'Cabin' => array(
-			'className' => 'Cabin',
-			'foreignKey' => 'cabin_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
 		)
 	);
 
@@ -86,37 +79,6 @@ class Fare extends AppModel {
  *
  * @var array
  */
-	public $hasAndBelongsToMany = array(
-		'Flight' => array(
-			'className' => 'Flight',
-			'joinTable' => 'fares_flights',
-			'foreignKey' => 'fare_id',
-			'associationForeignKey' => 'flight_id',
-			'unique' => true,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-			'deleteQuery' => '',
-			'insertQuery' => ''
-		),
-		'Re' => array(
-			'className' => 'Re',
-			'joinTable' => 'res_fares',
-			'foreignKey' => 'fare_id',
-			'associationForeignKey' => 're_id',
-			'unique' => true,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-			'deleteQuery' => '',
-			'insertQuery' => ''
-		)
-	);
+
 
 }

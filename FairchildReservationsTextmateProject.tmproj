@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>cake/app/Test/Case/Controller/FlightsControllerTest.php</string>
+	<string>cake/app/Controller/AppController.php</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -27,6 +27,20 @@
 	<integer>344</integer>
 	<key>metaData</key>
 	<dict>
+		<key>cake/app/Controller/AppController.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>61</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>38</integer>
+		</dict>
 		<key>cake/app/Controller/FlightsController.php</key>
 		<dict>
 			<key>caret</key>
@@ -34,113 +48,143 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>239</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>207</integer>
-		</dict>
-		<key>cake/app/Controller/ResCcPaymentsController.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>19</integer>
-				<key>line</key>
-				<integer>120</integer>
+				<integer>127</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>75</integer>
+			<integer>115</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>4</integer>
 				<key>line</key>
-				<integer>120</integer>
+				<integer>130</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>19</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>120</integer>
+				<integer>127</integer>
 			</dict>
 		</dict>
-		<key>cake/app/Controller/ReservationsController.php</key>
+		<key>cake/app/Controller/ResPassengersController.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>6</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>111</integer>
+				<integer>107</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>55</integer>
 		</dict>
-		<key>cake/app/Locale/ResPassengersController.php</key>
+		<key>cake/app/Model/ResPassenger.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>112</integer>
+				<integer>102</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>69</integer>
-			<key>selectFrom</key>
+			<integer>57</integer>
+		</dict>
+		<key>cake/app/View/Layouts/default.ctp</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>172</integer>
+				<key>line</key>
+				<integer>33</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>cake/app/View/ResPassengers/passenger_details.ctp</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>24</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>cake/app/webroot/js/ResPassengers.js</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>3</integer>
 				<key>line</key>
-				<integer>112</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>112</integer>
-			</dict>
-		</dict>
-		<key>cake/app/Test/Case/Controller/FlightsControllerTest.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
+				<integer>2</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>97</integer>
+			<integer>0</integer>
+		</dict>
+		<key>cake/app/webroot/qunit.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>34</integer>
+				<key>line</key>
+				<integer>8</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>cake/app/webroot/test.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>cake/app/Model/ResPassenger.php</string>
+		<string>cake/app/Controller/ResPassengersController.php</string>
+		<string>cake/app/webroot/js/ResPassengers.js</string>
+		<string>cake/app/Controller/AppController.php</string>
+		<string>cake/app/webroot/test.js</string>
+		<string>cake/app/View/Layouts/default.ctp</string>
+		<string>cake/app/View/ResPassengers/passenger_details.ctp</string>
+		<string>cake/app/webroot/qunit.html</string>
 		<string>cake/app/Controller/FlightsController.php</string>
-		<string>cake/app/Test/Case/Controller/FlightsControllerTest.php</string>
-		<string>cake/app/Locale/ResPassengersController.php</string>
-		<string>cake/app/Controller/ResCcPaymentsController.php</string>
-		<string>cake/app/Controller/ReservationsController.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{-182, 0}, {1783, 878}}</string>
+	<string>{{64, 0}, {1029, 878}}</string>
 </dict>
 </plist>

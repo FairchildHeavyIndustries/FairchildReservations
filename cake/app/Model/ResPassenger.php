@@ -17,7 +17,7 @@ class ResPassenger extends AppModel {
  *
  * @var array
  */
-/*
+
 	public $validate = array(
 		'id' => array(
 			'numeric' => array(
@@ -71,7 +71,7 @@ class ResPassenger extends AppModel {
 		),
 		'telephone' => array(
 			'phone' => array(
-				'rule' => array('phone'),
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -100,7 +100,7 @@ class ResPassenger extends AppModel {
 			),
 		),
 	);
-*/
+
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**

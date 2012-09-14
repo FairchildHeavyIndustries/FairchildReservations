@@ -31,7 +31,7 @@
 
 		//echo $this->Html->css(array('cake.generic', 'jquery-ui'));
 		echo $this->Html->css(array('jquery-ui'));
-		echo $this->Html->script(array('http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js', 'frs', 'jquery-ui.min', $title_for_layout), array('inline' => true));
+		echo $this->Html->script(array('http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js', 'frs', 'jquery-ui.min', $title_for_layout), array('inline' => true));
 		//echo $scripts_for_layout;
 
 	?>

@@ -13,13 +13,21 @@
 		<h2>Passenger&nbsp;<?php echo $pax_index + 1 ?></h2>
 		<?php
 			echo $this->Form->hidden('ResPassenger.'  . $pax_index . '.seqn_no', array('value' => $pax_index));
-			echo $this->Form->input('ResPassenger.'  . $pax_index . '.first_name');
-			echo $this->Form->input('ResPassenger.'  . $pax_index . '.last_name');
-			echo $this->Form->input('ResPassenger.'  . $pax_index . '.telephone');
-			echo $this->Form->input('ResPassenger.'  . $pax_index . '.email');
+			echo $this->Form->input('ResPassenger.'  . $pax_index . '.first_name', array(
+				'class'	=> 'required'
+			));
+			echo $this->Form->input('ResPassenger.'  . $pax_index . '.last_name', array(
+				'class'	=> 'required'
+			));
+			echo $this->Form->input('ResPassenger.'  . $pax_index . '.telephone', array(
+				'class'	=> 'required'
+			));
+			echo $this->Form->input('ResPassenger.'  . $pax_index . '.email', array(
+				'class'	=> 'required email'
+			));
 			echo $this->Form->input('ResPassenger.'  . $pax_index . '.date_of_birth', array(
 				'type'	=> 'text',
-				'class' => 'calendar_input',
+				'class' => 'calendar_input required',
 				'id'	=> 'birth_date_' . $pax_index 
 			));
 			$pax_index++;
