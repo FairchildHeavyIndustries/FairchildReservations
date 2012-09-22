@@ -15,23 +15,24 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-if (Configure::read('debug') == 0):
-	throw new NotFoundException();
-endif;
+
 App::uses('Debugger', 'Utility');
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html>
-	<head>
-		<title></title>
-	</head>
-	<body>
-		<div id="main"></div>
+
+
 		<div id="search_wrapper">
-			<div id='search_tab'>
-				<h3>
-					Search for Flights
-				</h3>
+			<div id='tabs'>
+				<ul>
+					<li>
+						<a href="#tabs-1">Search for Flights</a>
+					</li>
+					<li>
+						<a href="#tabs-2">My Bookings</a>
+					</li>
+				</ul>
+				
+				<div id='tabs-1'>
+				
 				<?php 
 					
 					echo $this->Form->create('Flights', array('action' => 'outbound_flights' )); 
@@ -45,19 +46,19 @@ App::uses('Debugger', 'Utility');
 						)
 					);
 					
-					echo $this->Form->input('departure_airport', array(
-						'type'    => 'select',
-						'options' => $departure_airport_list,
-						'empty'   => true,
-						'label'	=> 'Departure Airport'
-					));
+					?>
+
+						
+					<?php
 					
-					echo $this->Form->input('arrival_airport', array(
+					$this->AirportOptions->createOptions($departure_data, "Departure");
+					$this->AirportOptions->createOptions($arrival_data, "Arrival");
+					/*echo $this->Form->input('arrival_airport', array(
 						'type'    => 'select',
 						'options' => $arrival_airport_list,
 						'empty'   => true,
 						'label'	=> 'Arrival Airport'
-					));
+					));*/
 					echo $this->Form->input('departure_date', array(
 						'type'	=> 'text',
 						'class' => 'calendar_input',
@@ -80,20 +81,20 @@ App::uses('Debugger', 'Utility');
 				
 				 
 				
-			</div>
-			<div id='reservation_tab'>
-				<h3>
-					My Bookings
-				</h3><label for="enter_locator">Enter Locator<input type="text" name="enter_locator" value="" id="enter_locator"></label>
+				</div>
+				<div id='tabs-2'>
+					<label for="enter_locator">Enter Locator<input type="text" name="enter_locator" value="" id="enter_locator"></label>
+				</div>
 			</div>
 		</div>
-		<div id="console_wrapper">
-			<h3>
-				the console
-			</h3>
-			<div id="map_container">
-				<div id="map_background" class='map_image'></div>
-			</div><span id='console'></span>
+		<div id="map_container">
+			<img src='/img/map_bgrnd.png' width='650' height='400'></img>
+		
+		 <canvas id="map_canvas" width="650" height="400"></canvas>
 		</div>
-	</body>
-</html>
+		<div id="coords">
+			
+		</div>
+	
+		
+	

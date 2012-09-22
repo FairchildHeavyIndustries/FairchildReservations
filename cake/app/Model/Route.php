@@ -87,20 +87,20 @@ class Route extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)// ,
-		// 		'Flight' => array(
-		// 			'className' => 'Flight',
-		// 			'foreignKey' => 'route_id',
-		// 			'dependent' => false,
-		// 			'conditions' => '',
-		// 			'fields' => '',
-		// 			'order' => '',
-		// 			'limit' => '',
-		// 			'offset' => '',
-		// 			'exclusive' => '',
-		// 			'finderQuery' => '',
-		// 			'counterQuery' => ''
-		// 		)
+		) ,
+	 	'Flight' => array(
+ 			'className' => 'Flight',
+ 			'foreignKey' => 'route_id',
+ 			'dependent' => false,
+ 			'conditions' => '',
+ 			'fields' => '',
+ 			'order' => '',
+ 			'limit' => '',
+ 			'offset' => '',
+ 			'exclusive' => '',
+ 			'finderQuery' => '',
+ 			'counterQuery' => ''
+ 		)
 	);
 
 }

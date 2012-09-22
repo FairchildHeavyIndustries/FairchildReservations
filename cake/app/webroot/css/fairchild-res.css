@@ -1,0 +1,91 @@
+html, body {
+	font: 13px Helvetica, "Helvetica Neue", Arial, sans-serif;
+	color: black;
+	background-color: #abedfc;
+}
+
+#container {
+	width: 1000px;
+	position: relative;
+	margin: 0 auto;
+	
+}
+
+#content {
+	height: 410px;
+	background-color: #fffeff;
+	border-radius:32px;
+	padding: 20px;
+	box-shadow:2px 2px 25px 0px #aaaaaa;
+	margin-top: 20px;
+}
+#search_wrapper, fieldset {
+	width: 300px;
+	float: left;
+}
+
+.input {
+	clear: both;
+}
+
+.input label {
+	float: left; 
+	width: 40%;
+}
+
+.input input.text {
+	float: right; 
+	width: 40%;
+}
+.calendar_input {
+	width:;
+}
+input[type="submit"] {
+	margin-top: 20px;
+	float: right;
+}
+
+#map_container {
+	position: relative;
+	float: left;
+	margin: 5px;
+}
+
+#map {
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	z-index: 0;
+}
+#map_canvas {
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	z-index: 1;
+	
+}
+#tabs {
+	height: 300px;
+}
+.frs-logo {
+	display: inline-block;
+	height: 168px;
+	width: 454px;
+	background-image: url('/img/FRS_logo.png');
+}
+
+.environment {
+	font-style: italic;
+	position:absolute; 
+	bottom: 20px;.
+}
+
+footer {
+	text-align: center;
+	padding-top: 10px;
+	
+
+}
+footer span {
+	font-style: italic;
+} 

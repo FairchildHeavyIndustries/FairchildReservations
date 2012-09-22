@@ -27,7 +27,8 @@
 		echo $this->Form->input('ResCcPayment.0.amount', array('value' => $Total, 'disabled' => true ) );
 		echo $this->Form->input('ResCcPayment.0.currency');
 
+	 echo $this->Form->end(__('Confirm Booking'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Confirm Booking'));?>
+
 </div>

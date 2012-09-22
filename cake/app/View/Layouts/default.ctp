@@ -18,8 +18,10 @@
 
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<?php
+	$this->Html->docType('HTML5');
+?>
+<html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -29,26 +31,26 @@
 	<?php
 		echo $this->Html->meta('icon');
 
-		//echo $this->Html->css(array('cake.generic', 'jquery-ui'));
-		echo $this->Html->css(array('jquery-ui'));
-		echo $this->Html->script(array('http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js', 'frs', 'jquery-ui.min', $title_for_layout), array('inline' => true));
+		echo $this->Html->css(array( 'fairchild-res', 'jquery-ui'));
+		echo $this->Html->script(array('http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js', 'frs',  $title_for_layout), array('inline' => true));
 		//echo $scripts_for_layout;
 
 	?>
 </head>
 <body>
 	<div id="container">
-		<div id="header">
-			<h1><a href='/'>Fairchild Reservation System</a></h1>
-		<div>
+		<header>
+			<a href='/' class='frs-logo'></a>
+		</header>
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $content_for_layout; ?>
 
 		</div>
-		<div id="footer">
-		</div>
+		<footer>
+			<span>All content &copy; 2012 <a href="mailto:alex.fairchild@gmail.com">Alex Fairchild</a></span>
+		</footer>
 	</div>
 	<?php 
 		$environment = $this->element('environment'); 

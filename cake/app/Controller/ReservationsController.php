@@ -69,8 +69,10 @@ class ReservationsController extends AppController {
 				
 		$this->Reservation->create();
 		if ($this->Reservation->saveAssociated($booking)) {
-			$this->Session->setFlash(__('The reservation has been saved'));
-			return $this->redirect(array('action' => 'index'));
+			$resId = $this->Reservation->getLastInsertId();
+			$this->Session->setFlash(__('You reservation has been confirmed.'));
+			$this->redirect('/Reservations/view/' . $resId);
+			//return $this->redirect(array('action' => 'index'));
 		} else {
 			$this->Session->setFlash(__('The reservation could not be saved. Please, try again.'));
 			debug($this->Reservation->validationErrors);

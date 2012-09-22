@@ -50,7 +50,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array('Flight');
+	public $uses = array('Route', 'Flight');
 
 /**
  * Displays a view
@@ -77,21 +77,13 @@ class PagesController extends AppController {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
 		
-		$departure_airport_list = $this->Flight->find('all', array('fields' => array('distinct (Flight.departure_airport)')));
-		$departure_airport_list = Set::extract($departure_airport_list, '/Flight/departure_airport');
-		$departure_airport_list = $this->array_to_select_list($departure_airport_list);
-		$this->set('departure_airport_list', $departure_airport_list);
-		
-		$arrival_airport_list = $this->Flight->find('all', array('fields' => array('distinct (Flight.arrival_airport)')));
-		$arrival_airport_list = Set::extract($arrival_airport_list, '/Flight/arrival_airport');
-		$arrival_airport_list = $this->array_to_select_list($arrival_airport_list);
-		$this->set('arrival_airport_list', $arrival_airport_list);
+		$this->setAirportData();
 
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));
 		
 
 	}
-	
+
 
 }

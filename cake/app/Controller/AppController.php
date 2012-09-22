@@ -34,6 +34,10 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	
+	var $persistModel = true;
+	
+	public $helpers = array('AirportOptions', 'Form');
+	
 	public function array_to_select_list($input_array)
 	{
 		$return_list = array_fill_keys(array_values($input_array), 'temp');
@@ -117,5 +121,19 @@ class AppController extends Controller {
 		list($month, $day, $year) = explode("/", $input_date);
 		$sql_date = $year . '-' . $month . '-' . $day;
 		return $sql_date;
+	}
+	
+	public function setAirportData () {
+		$this->Route->recursive = 2;
+		$routes = $this->Route->find('all');
+		$departure_airport_list = $this->array_to_select_list(Set::extract($routes, '/Flight/departure_airport'));
+		$arrival_airport_list = $this->array_to_select_list(Set::extract($routes, '/Flight/arrival_airport'));
+		$departure_data = Set::combine($routes, '{n}.StartAirport.name', '{n}.StartAirport.City');
+		$arrival_data = Set::combine($routes, '{n}.EndAirport.name', '{n}.EndAirport.City');
+		$this->set('departure_data', $departure_data);
+		$this->set('arrival_data', $arrival_data);
+		$this->set('departure_airport_list', $departure_airport_list);
+		$this->set('arrival_airport_list', $arrival_airport_list);
+
 	}
 }

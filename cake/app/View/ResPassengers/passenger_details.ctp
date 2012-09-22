@@ -32,7 +32,8 @@
 			));
 			$pax_index++;
 		endwhile;
+		
+	echo $this->Form->end(__('Submit'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
 </div>
