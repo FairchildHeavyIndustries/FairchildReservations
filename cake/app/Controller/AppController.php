@@ -36,7 +36,7 @@ class AppController extends Controller {
 	
 	var $persistModel = true;
 	
-	public $helpers = array('AirportOptions', 'Form');
+	public $helpers = array('AirportOptions', 'Form', 'Session');
 	
 	public function array_to_select_list($input_array)
 	{

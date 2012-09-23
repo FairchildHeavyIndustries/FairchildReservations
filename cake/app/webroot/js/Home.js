@@ -2,14 +2,23 @@ $(document).ready(function(){
 		$(".calendar_input").datepicker();
 		$("#tabs").tabs();
 		
-		
-		
-		
-		
-		
 		var c=document.getElementById("map_canvas");
 		var ctx=c.getContext("2d");
 			var div = document.getElementById("coords");
+		
+		$("#FlightsDepartureAirport option:first-child").mouseenter(function() {
+			alert("howdy, sf");
+		});
+
+		function fadeInCity () {
+			var Opac = 0
+			var interval = setInterval(function() {
+				
+				drawCity(Opac/100);
+				Opac = Opac + 8;
+				if (Opac >= 101) clearInterval(interval);
+			}, 1);
+		}
 		
 		function drawCity (opacity) {
 			ctx.clearRect(0,0,650,400);
@@ -21,16 +30,6 @@ $(document).ready(function(){
 			ctx.stroke();
 			div.innerHTML = "opacity: " + opacity  ;
 			
-		}
-
-		function fadeInCity () {
-			var Opac = 0
-			var interval = setInterval(function() {
-				
-				drawCity(Opac/100);
-				Opac = Opac + 8;
-				if (Opac >= 101) clearInterval(interval);
-			}, 1);
 		}
 		
 		
