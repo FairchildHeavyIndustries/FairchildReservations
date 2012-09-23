@@ -41,7 +41,7 @@ class FlightsControllerTestCase extends ControllerTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.flight', 'app.carrier', 'app.aircraft', 'app.cabin', 'app.res_flight', 'app.reservation', 'app.res_passenger', 'app.route', 'app.fare', 'app.aircrafts_cabin');
+	public $fixtures = array('app.flight', 'app.carrier', 'app.aircraft', 'app.cabin', 'app.res_flight', 'app.res_fare', 'app.reservation', 'app.res_passenger', 'app.route', 'app.fare', 'app.aircrafts_cabin');
 
 /**
  * setUp method
