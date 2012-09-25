@@ -12,7 +12,6 @@ html, body {
 }
 
 #content {
-	height: 410px;
 	background-color: #fffeff;
 	border-radius:32px;
 	padding: 20px;
@@ -57,15 +56,14 @@ input[type="submit"] {
 	top: 0; 
 	z-index: 0;
 }
-#map_canvas {
+canvas  {
 	position: absolute; 
 	left: 0; 
-	top: 0; 
-	z-index: 1;
+	top: 0;	
 	
 }
 #tabs {
-	height: 300px;
+	height: 400px;
 }
 .frs-logo {
 	display: inline-block;
@@ -89,3 +87,11 @@ footer {
 footer span {
 	font-style: italic;
 } 
+
+div.ui-datepicker{
+ font-size:10px;
+}
+
+.cf:before, .cf:after { content: ""; display: table; }
+.cf:after { clear: both; }
+.cf { zoom: 1; }

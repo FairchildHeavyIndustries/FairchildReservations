@@ -1,0 +1,76 @@
+.slkt_container {
+	position: relative;
+}
+
+.slkt_container_inactive  {
+	color: gray;
+}
+.slkt_dropdown {
+	background: white;
+	z-index: 100;
+	position: absolute;
+	padding: 10px;
+	
+	/*left: 0px;*/
+	top: -80px;
+	-webkit-box-shadow: 0px 0px 10px 0px #003;
+	-moz-box-shadow: 0px 0px 10px 0px #003;
+	box-shadow: 3px 3px 8px 0px #003;
+	
+}
+.slkt_button {
+	background: url(../img/selekt180x33.png) no-repeat;
+	display: table-cell;
+	vertical-align: middle;
+	width: 180px;
+	height: 33px;
+	border: none;
+	margin: 0px;
+	padding: 0px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0px 0px 5px 0px #888;	
+	-moz-box-shadow: 0px 0px 5px 0px #888;	
+	box-shadow: 0px 0px 5px 0px #888;	
+}
+
+.slkt_button:hover {
+	-webkit-box-shadow: 0px 0px 10px 0px #003;
+	-moz-box-shadow: 0px 0px 10px 0px #003;
+	box-shadow: 0px 0px 10px 0px #003;
+}
+.slkt_text {
+	font-size: 10pt;
+	margin-left: 10px;
+}
+
+.slkt_item {
+	border:1px dotted gray;
+	padding: 5px;
+	margin-bottom: 5px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+
+.slkt_item_hover {
+	-webkit-box-shadow: 0px 0px 10px 0px #003;
+	-moz-box-shadow: 0px 0px 10px 0px #003;
+	box-shadow: 0px 0px 10px 0px #003;
+}
+
+.slkt_item_clicked {
+	margin-left: 1px;
+	-webkit-box-shadow: inset 2px 2px 2px 2px black;
+	-moz-box-shadow: inset 2px 2px 2px 2px black;
+	box-shadow: inset 3px 3px 3px 0px #003;
+}
+
+.slkt_item_selected {
+	border: 2px dotted blue;
+	
+}
+
+.airport_name {
+	font-size: 8pt;
+	font-style: italic;
+}
+

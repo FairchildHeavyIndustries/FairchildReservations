@@ -46,19 +46,15 @@ App::uses('Debugger', 'Utility');
 						)
 					);
 					
-					?>
-
-						
-					<?php
-					
 					$this->AirportOptions->createOptions($departure_data, "Departure");
+					echo $this->Form->input('departure_airport', array(
+						'type'    => 'hidden',
+					));
 					$this->AirportOptions->createOptions($arrival_data, "Arrival");
-					/*echo $this->Form->input('arrival_airport', array(
-						'type'    => 'select',
-						'options' => $arrival_airport_list,
-						'empty'   => true,
-						'label'	=> 'Arrival Airport'
-					));*/
+					
+					echo $this->Form->input('arrival_airport', array(
+						'type'    => 'hidden',
+					));
 					echo $this->Form->input('departure_date', array(
 						'type'	=> 'text',
 						'class' => 'calendar_input',
@@ -89,8 +85,9 @@ App::uses('Debugger', 'Utility');
 		</div>
 		<div id="map_container">
 			<img src='/img/map_bgrnd.png' width='650' height='400'></img>
-		
-		 <canvas id="map_canvas" width="650" height="400"></canvas>
+			<canvas id="departure_canvas" width="650" height="400"></canvas>
+			<canvas id="arrival_canvas" width="650" height="400"></canvas>
+			<canvas id="path_canvas" width="650" height="400"></canvas>
 		</div>
 		<div id="coords">
 			

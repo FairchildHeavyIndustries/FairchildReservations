@@ -126,10 +126,13 @@ class AppController extends Controller {
 	public function setAirportData () {
 		$this->Route->recursive = 2;
 		$routes = $this->Route->find('all');
+
 		$departure_airport_list = $this->array_to_select_list(Set::extract($routes, '/Flight/departure_airport'));
 		$arrival_airport_list = $this->array_to_select_list(Set::extract($routes, '/Flight/arrival_airport'));
+
 		$departure_data = Set::combine($routes, '{n}.StartAirport.name', '{n}.StartAirport.City');
 		$arrival_data = Set::combine($routes, '{n}.EndAirport.name', '{n}.EndAirport.City');
+
 		$this->set('departure_data', $departure_data);
 		$this->set('arrival_data', $arrival_data);
 		$this->set('departure_airport_list', $departure_airport_list);

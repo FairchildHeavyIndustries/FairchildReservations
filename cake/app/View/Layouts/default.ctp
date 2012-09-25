@@ -31,7 +31,7 @@
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array( 'fairchild-res', 'jquery-ui'));
+		echo $this->Html->css(array( 'fairchild-res', 'frs.dropdown', 'jquery-ui'));
 		echo $this->Html->script(array('http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js', 'frs',  $title_for_layout), array('inline' => true));
 		//echo $scripts_for_layout;
 
@@ -42,7 +42,7 @@
 		<header>
 			<a href='/' class='frs-logo'></a>
 		</header>
-		<div id="content">
+		<div id="content" class='cf'>
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $content_for_layout; ?>
