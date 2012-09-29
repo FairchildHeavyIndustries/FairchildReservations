@@ -6,8 +6,7 @@ App::uses('AppController', 'Controller');
  * @property Route $Route
  */
 class RoutesController extends AppController {
-
-
+	var $components = array('RequestHandler');
 /**
  * index method
  *
@@ -99,4 +98,15 @@ class RoutesController extends AppController {
 		$this->Session->setFlash(__('Route was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+	public function ajaxServicedAirport($departure_airport)
+	{
+		//$this->autoRender = FALSE;
+		$arrival_data = $this->Route->servicedAirportData($departure_airport);
+		$this->set('airport_data', $arrival_data);
+		$this->set('Direction', 'Arrival');
+		//$returnVal = $this->AirportOptions->createOptions('arrival_data', $arrival_data);
+		//echo $returnVal;
+	}
+	
+
 }

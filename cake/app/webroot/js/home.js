@@ -6,18 +6,18 @@ $(document).ready(function(){
 			$("#FlightsDepartureAirport").attr("value", airport);
 			//animatePath();
 		});
-		initSlktPanel("arrival", function(airport){
-			$("#FlightsArrivalAirport").attr("value", airport);
-			//animatePath();
-		});
+		
 
 		$(".slkt_button").click(function(){
-			var thisDropdown = $(this).siblings(".slkt_dropdown");
-			thisDropdown.fadeIn("1", function(){
-				thisDropdown.addClass('slkt_visible').mouseleave(function(){
-					    thisDropdown.fadeOut("slow");
-				 });;
-			});
+			if ($(this).parent().hasClass("enabled")) {
+				var thisDropdown = $(this).siblings(".slkt_dropdown");
+				thisDropdown.fadeIn("1", function(){
+					thisDropdown.addClass('slkt_visible').mouseleave(function(){
+						    thisDropdown.fadeOut("slow");
+					 });;
+				});
+			};
+			
 		})
 
 		$('select[name="arrival_city"]').change(function(){
@@ -37,9 +37,23 @@ $(document).ready(function(){
 					$(this).removeClass("slkt_item_hover");
 					$(this).addClass("slkt_item_clicked");
 				}).mouseup(	function(){
+					if (direction == 'departure') {
+						clearArrivalAirport();
+						$.get('/routes/ajaxServicedAirport/' + currAirport, function(options){
+							$("#arrival_city_selekt").append(options);
+							if ($("#arrival_city_selekt.disabled")) {
+								$("#arrival_city_selekt.disabled").removeClass("disabled").addClass("enabled");
+								initSlktPanel("arrival", function(airport){
+									$("#FlightsArrivalAirport").attr("value", airport);
+									$("#arrival_city_selekt").children(".slkt_text").text(currCity);
+									//animatePath();
+								});
+							};
+						});
+					};
 					$(this).addClass("slkt_item_hover");
 					$(this).removeClass("slkt_item_clicked");
-					$(this).parents(".slkt_dropdown").hide().siblings(".slkt_button").children(".slkt_text").text(currCity);;
+					$(this).parents(".slkt_dropdown").hide().siblings(".slkt_button").children(".slkt_text").text(currCity);
 					$(this).each(function(){$(this).removeClass("slkt_item_selected")});
 					callbackFunction(currAirport);
 					$(this[i]).addClass("slkt_item_selected");
@@ -50,6 +64,11 @@ $(document).ready(function(){
 			})
 		}
 	
+	function clearArrivalAirport () {
+		$("#FlightsArrivalAirport").removeAttr("value");
+		$('#arrival_airp_drodwn').remove();
+		$("#arrival_slkt_button span.slkt_text").text("");
+	}
 	
 	function fadeInCity (cityDIV, direction) {
 		var Opac = 0

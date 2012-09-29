@@ -46,11 +46,24 @@ App::uses('Debugger', 'Utility');
 						)
 					);
 					
-					$this->AirportOptions->createOptions($departure_data, "Departure");
+					
 					echo $this->Form->input('departure_airport', array(
 						'type'    => 'hidden',
 					));
-					$this->AirportOptions->createOptions($arrival_data, "Arrival");
+					
+					?>
+					<div id="departure_city_selekt" class="slkt_container enabled">
+						<label>Departure from</label>
+					<?php 
+						$this->AirportOptions->createDropdown($departure_data, "Departure");
+					 ?>
+						<div class="slkt_button" id="departure_slkt_button"><span class="slkt_text">Choose a City:</span></div>
+					</div>
+					<div id="arrival_city_selekt" class="slkt_container disabled">
+						<label>Arrival to</label>
+						<div class="slkt_button" id="arrival_slkt_button"><span class="slkt_text"></span></div>
+					</div>	
+					<?php
 					
 					echo $this->Form->input('arrival_airport', array(
 						'type'    => 'hidden',

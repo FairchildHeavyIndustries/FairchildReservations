@@ -44,6 +44,13 @@ class PagesController extends AppController {
  * @var array
  */
 	public $helpers = array('Html', 'Session');
+	
+/**
+ * components
+ *
+ * @var array
+ */
+	public $components = array('RequestHandler');	
 
 /**
  * This controller does use a model
@@ -77,13 +84,15 @@ class PagesController extends AppController {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
 		
-		$this->setAirportData();
+		$this->setDepartureData();
 
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));
 		
 
 	}
+	
+
 
 
 }

@@ -32,7 +32,7 @@
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css(array( 'fairchild-res', 'frs.dropdown', 'jquery-ui'));
-		echo $this->Html->script(array('http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js', 'frs',  $title_for_layout), array('inline' => true));
+		echo $this->Html->script(array('http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js', $title_for_layout), array('inline' => true));
 		//echo $scripts_for_layout;
 
 	?>

@@ -102,5 +102,25 @@ class Route extends AppModel {
  			'counterQuery' => ''
  		)
 	);
+	
+	public function departureData($value='')
+	{
+		$routes = $this->find('all', array('recursive' => 2));
+
+		$departure_data = Set::combine($routes, '{n}.StartAirport.name', '{n}.StartAirport.City');
+		return $departure_data;
+	}
+	
+	public function servicedAirportData($startAirport)
+	{
+		$this->recursive = 2;
+		$routes = $this->find('all', array(
+			'recursive' => 2,
+			'conditions' => array('StartAirport.name' => $startAirport)
+		));
+
+		$departure_data = Set::combine($routes, '{n}.EndAirport.name', '{n}.EndAirport.City');
+		return $departure_data;
+	}
 
 }

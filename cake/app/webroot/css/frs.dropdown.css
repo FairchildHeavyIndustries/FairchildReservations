@@ -6,6 +6,7 @@
 	color: gray;
 }
 .slkt_dropdown {
+	width: 200px;
 	background: white;
 	z-index: 100;
 	position: absolute;
@@ -33,10 +34,14 @@
 	box-shadow: 0px 0px 5px 0px #888;	
 }
 
-.slkt_button:hover {
+.slkt_container.enabled .slkt_button:hover {
 	-webkit-box-shadow: 0px 0px 10px 0px #003;
 	-moz-box-shadow: 0px 0px 10px 0px #003;
 	box-shadow: 0px 0px 10px 0px #003;
+}
+
+.slkt_container.disabled label {
+	color: #c0c0c0;
 }
 .slkt_text {
 	font-size: 10pt;
