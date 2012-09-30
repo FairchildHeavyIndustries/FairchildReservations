@@ -9,7 +9,7 @@
 			echo $this->Form->create('Flights', array('action' => $action ));
 			 
 	?>
-	<table cellpadding="0" cellspacing="0">
+	<table cellpadding="0" cellspacing="0" class='available_flights'>
 	<tr>
 			<th>Flight Number</th>
 			<th>Departure Time</th>
@@ -28,9 +28,7 @@
 	foreach ($flights as $flight): ?>
 
 	<tr>
-		<td>
-			<?php echo h($flight['Carrier']['name'] . $flight['Flight']['number']); ?>
-		</td>
+		<td><?php echo trim($flight['Carrier']['name'] . $flight['Flight']['number']); ?></td>
 		<td><?php echo $this->Time->format('h:i A', $flight['Flight']['departure_time']); ?></td>
 		<td><?php echo $this->Time->format('h:i A', $flight['Flight']['arrival_time']); ?></td>
 		<?php foreach ($cabins as $cabin): 
@@ -50,7 +48,7 @@
 			};
 		
 		?>
-		<td>
+		<td class='cabin_picker'>
 			<?php 
 				if ($fare_id) {
 					$flightPriceInfo= $flight['Flight']['id'] . "_" . $cabin['id'] . "_" . $fare_id;

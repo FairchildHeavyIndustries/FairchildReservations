@@ -4,6 +4,13 @@ html, body {
 	background-color: #abedfc;
 }
 
+table {
+	font: inherit;
+	display: block;
+	margin: 5px;
+ 	padding: 5px;
+}
+
 #container {
 	width: 1000px;
 	position: relative;
@@ -23,26 +30,62 @@ html, body {
 	float: left;
 }
 
-.input {
-	clear: both;
+.left {
+	float: left;
 }
 
-.input label {
-	float: left; 
-	width: 40%;
+#arrival_date {
+	margin-left: 18px;
 }
+
+input {
+	border-radius:10px;
+	height: 33px;
+}
+.input {
+	clear: both;
+	margin-top: 7px;
+}
+
 
 .input input.text {
 	float: right; 
 	width: 40%;
 }
 .calendar_input {
-	width:;
+	width: 123px;
+}
+
+#FlightsDepartureDate {
+	float: left;
 }
 input[type="submit"] {
 	margin-top: 20px;
 	float: right;
 }
+
+input[type="text"], input[type="number"]  {
+	float: right;
+}
+
+fieldset	{
+	border: none;
+}
+
+fieldset legend, table caption {
+	font-size: 2em;
+	text-align: left;
+}
+
+.available_flights td, .available_flights th, #payment_details td   {
+	width: 16%;
+	text-align: right;
+}
+
+.available_flights th  {
+	padding-top: 10px;
+}
+
 
 #map_container {
 	position: relative;
@@ -95,3 +138,15 @@ div.ui-datepicker{
 .cf:before, .cf:after { content: ""; display: table; }
 .cf:after { clear: both; }
 .cf { zoom: 1; }
+
+label.error {
+	color: red;
+position: absolute;
+left: 350px;
+	font-style: italic;
+}
+
+input.error {
+border-color: #ff7d7a;
+
+}

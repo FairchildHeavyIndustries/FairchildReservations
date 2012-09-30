@@ -46,7 +46,15 @@ class ReservationsController extends AppController {
 		if (!$this->Reservation->exists()) {
 			throw new NotFoundException(__('Invalid reservation'));
 		}
-		$this->set('reservation', $this->Reservation->read(null, $id));
+		$reservation = $this->Reservation->find(
+			"first", 
+			array(
+		        'conditions' => array('Reservation.id' => $id),
+				'recursive' => 3
+				)
+			);
+		//debug($reservation);
+		$this->set('reservation', $reservation);
 	}
 
 

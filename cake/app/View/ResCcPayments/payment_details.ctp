@@ -2,7 +2,8 @@
 
 //debug(SessionHelper::read());
 ?>
-<table border ="1" cellpadding="0" cellspacing="0">
+
+<table cellpadding="0" cellspacing="0" id='payment_details'>
 	<caption>Price</caption>
 	<?php
 	foreach ($Pricing as $price): ?>
@@ -21,11 +22,20 @@
 		<legend><?php echo __('Payment Details'); ?></legend>
 	<?php
 		echo $this->Form->input('ResCcPayment.0.card_issuer_id');
-		echo $this->Form->input('ResCcPayment.0.cc_number');
-		echo $this->Form->input('ResCcPayment.0.expiration');		
-		echo $this->Form->input('ResCcPayment.0.cvv');		
-		echo $this->Form->input('ResCcPayment.0.amount', array('value' => $Total, 'disabled' => true ) );
-		echo $this->Form->input('ResCcPayment.0.currency');
+		echo $this->Form->input('ResCcPayment.0.cc_number', array(
+			'class'	=> 'required numeric'
+		));
+		echo $this->Form->input('ResCcPayment.0.expiration', array(
+			'class'	=> 'required numeric'
+		));		
+		echo $this->Form->input('ResCcPayment.0.cvv', array(
+			'class'	=> 'required numeric'
+		));		
+		echo $this->Form->input('ResCcPayment.0.amount', array('value' => $Total, 'disabled' => false ) );
+		echo $this->Form->input('ResCcPayment.0.currency', array(
+			'type'    => 'select',
+			'options' => array('USD' => 'USD'),
+		));
 
 	 echo $this->Form->end(__('Confirm Booking'));
 	?>

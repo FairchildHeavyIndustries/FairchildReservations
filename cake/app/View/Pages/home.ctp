@@ -52,14 +52,14 @@ App::uses('Debugger', 'Utility');
 					));
 					
 					?>
-					<div id="departure_city_selekt" class="slkt_container enabled">
+					<div id="departure_city_selekt" class="slkt_container enabled input">
 						<label>Departure from</label>
 					<?php 
 						$this->AirportOptions->createDropdown($departure_data, "Departure");
 					 ?>
 						<div class="slkt_button" id="departure_slkt_button"><span class="slkt_text">Choose a City:</span></div>
 					</div>
-					<div id="arrival_city_selekt" class="slkt_container disabled">
+					<div id="arrival_city_selekt" class="slkt_container disabled input">
 						<label>Arrival to</label>
 						<div class="slkt_button" id="arrival_slkt_button"><span class="slkt_text"></span></div>
 					</div>	
@@ -68,17 +68,18 @@ App::uses('Debugger', 'Utility');
 					echo $this->Form->input('arrival_airport', array(
 						'type'    => 'hidden',
 					));
-					echo $this->Form->input('departure_date', array(
-						'type'	=> 'text',
-						'class' => 'calendar_input',
-						'label'	=> 'Departure Date'
-					));
-					echo $this->Form->input('return_date', array(
-						'type'	=> 'text',
-						'class' => 'calendar_input',
-						'label'	=> 'Return Date'
-					));
-					
+					?>
+					<div class="input">
+						
+
+						<label id='departure_date'>Departure Date</label>
+						<label id='arrival_date' class='right'>Arrival Date</label>
+						<input name="data[Flights][departure_date]" class="calendar_input" type="text" id="FlightsDepartureDate">
+						<input name="data[Flights][return_date]" class="calendar_input" type="text" id="FlightsArrivalDate">
+					</div>		
+						
+					<?php
+
 					echo $this->Form->input('number_of_passengers', array(
 						'type'    => 'select',
 						'options' => array('1' => '1', '2'=> '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6'),

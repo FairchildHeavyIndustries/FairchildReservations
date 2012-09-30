@@ -1,4 +1,4 @@
 $(document).ready(function(){
-	$("#ResPassengerSetPassengerDetailsForm").validate();
+	$("#ResCcPaymentSetCcPaymentForm").validate();
 	$(".calendar_input").datepicker();
 })

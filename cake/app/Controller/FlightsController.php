@@ -21,7 +21,7 @@ class FlightsController extends AppController {
  *
  * @var array
  */
-	public $uses = array('Flight', 'Aircraft', 'Reservation', 'Cabin', 'ResFlight');
+	public $uses = array('Flight', 'Aircraft', 'Reservation', 'Cabin', 'ResFlight', 'Sanitize');
 
 
 /**
